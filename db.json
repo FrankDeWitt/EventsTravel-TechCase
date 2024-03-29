@@ -1,0 +1,54 @@
+{
+  "travels": [
+    {
+      "id": 1,
+      "name": "Rocky Mountains Exploration",
+      "departureDate": "2024-06-15",
+      "returnDate": "2024-06-22",
+      "picture": "url_to_rocy_mountains_picture.jpg",
+      "description": "A 7-day journey exploring the natural beauty of the Rocky Mountains, with activities including hiking, camping, and wildlife observation.",
+      "price": 950,
+      "averageRating": 4.5
+    },
+    {
+      "id": 2,
+      "name": "Amazon Jungle Adventure",
+      "departureDate": "2024-07-20",
+      "returnDate": "2024-07-30",
+      "picture": "url_to_amazon_jungle_picture.jpg",
+      "description": "Dive into the heart of the Amazon in this 10-day trip. Discover its unique biodiversity with expert local guides.",
+      "price": 1200,
+      "averageRating": 4.8
+    },
+    {
+      "id": 3,
+      "name": "Greek Islands Discovery",
+      "departureDate": "2024-05-10",
+      "returnDate": "2024-05-24",
+      "picture": "url_to_greek_islands_picture.jpg",
+      "description": "Explore the most enchanting Greek islands on a 14-day voyage. Enjoy the culture, beaches, and Mediterranean cuisine.",
+      "price": 1800,
+      "averageRating": 4.7
+    },
+    {
+      "id": 4,
+      "name": "Urban Exploration in Tokyo",
+      "departureDate": "2024-04-01",
+      "returnDate": "2024-04-08",
+      "picture": "url_to_tokyo_city_picture.jpg",
+      "description": "Experience the vibrant urban life of Tokyo on this 7-day trip. Discover its rich history, cutting-edge technology, and delicious street food.",
+      "price": 1300,
+      "averageRating": 4.6
+    },
+    {
+      "id": 5,
+      "name": "African Savannah Safari",
+      "departureDate": "2024-08-15",
+      "returnDate": "2024-08-25",
+      "picture": "url_to_african_savannah_picture.jpg",
+      "description": "Experience an exhilarating 10-day safari in the African savannah. Get up close with wildlife in their natural habitat.",
+      "price": 2000,
+      "averageRating": 4.9
+    }
+  ]
+}
