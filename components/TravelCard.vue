@@ -22,11 +22,11 @@ const tempData = reactive({
 })
 
 const emit = defineEmits<{
-  (event: 'deleteTravel', payload: number): void
   (event: 'editTravel', payload: Travel): void
+  (event: 'deleteTravel', payload: number): void
 }>()
 
-function handleUpdate(updatedData: Travel) {
+const handleUpdate = (updatedData: Travel) => {
   Object.assign(tempData, updatedData)
 }
 
@@ -50,7 +50,7 @@ watch(
     class="aspect-[3/2] w-full rounded-t-2xl object-cover"
     :src="data.picture"
   />
-  <div class="px-6 py-4">
+  <div class="flex flex-col px-6 py-4 min-h-80">
     <div class="flex items-center justify-between mt-6">
       <h3 class="text-lg font-semibold leading-8 tracking-tight text-gray-900">
         {{ data.name }}
@@ -78,17 +78,17 @@ watch(
             <HeadlessMenuItems
               class="absolute right-0 z-10 w-32 py-2 mt-2 origin-top-right bg-white rounded-md shadow-lg ring-1 ring-gray-900/5 focus:outline-none"
             >
-              <HeadlessMenuItem v-slot="{ active }">
+              <HeadlessMenuItem>
                 <span
-                  :class="[active ? 'bg-gray-50' : '', 'block px-3 py-1 text-sm leading-6 text-gray-900']"
+                  class="block px-3 py-1 text-sm leading-6 text-gray-900 cursor-pointer hover:bg-primary-50"
                   @click="open = !open"
                 >
                   Edit<span class="sr-only">, {{ data.name }}</span>
                 </span>
               </HeadlessMenuItem>
-              <HeadlessMenuItem v-slot="{ active }">
+              <HeadlessMenuItem>
                 <span
-                  :class="[active ? 'bg-gray-50' : '', 'block px-3 py-1 text-sm leading-6 text-gray-900']"
+                  class="block px-3 py-1 text-sm leading-6 text-gray-900 cursor-pointer hover:bg-primary-50"
                   @click="openConfirmation = true"
                 >
                   Delete<span class="sr-only">, {{ data.name }}</span>
@@ -99,7 +99,7 @@ watch(
         </HeadlessMenu>
       </div>
     </div>
-    <div class="flex items-center text-xs leading-5 text-gray-500 gap-x-2">
+    <div class="flex flex-wrap items-center text-xs leading-5 text-gray-500 gap-x-2">
       <p class="whitespace-nowrap">
         Departure {{ data.departureDate }}
       </p>
@@ -111,7 +111,7 @@ watch(
     <p class="mt-2 text-base leading-7 text-gray-600">
       {{ data.description }}
     </p>
-    <div class="flex flex-wrap items-center justify-between mt-2">
+    <div class="flex flex-wrap items-end justify-between flex-grow mt-2">
       <div class="flex space-x-2">
         <div class="flex items-center">
           <StarIcon
@@ -121,7 +121,9 @@ watch(
             aria-hidden="true"
           />
         </div>
-        <p>{{ data.averageRating }} out of 5 stars</p>
+        <p class="hidden md:block lg:hidden xl:block">
+          {{ data.averageRating }} out of 5 stars
+        </p>
       </div>
       <p class="font-bold text-wr-red">
         {{ data.price }}€
@@ -187,7 +189,7 @@ watch(
                 </button>
                 <button
                   type="button"
-                  class="inline-flex justify-center w-full px-3 py-2 text-sm font-semibold text-white bg-green-600 rounded-md shadow-sm hover:bg-green-500 sm:ml-3"
+                  class="inline-flex justify-center w-full px-3 py-2 text-sm font-semibold text-white rounded-md shadow-sm bg-primary-500 hover:bg-primary-600 sm:ml-3"
                   @click="emit('editTravel', tempData), (open = false)"
                 >
                   Save
@@ -220,8 +222,8 @@ watch(
         <div class="fixed inset-0 transition-opacity bg-gray-500 bg-opacity-75" />
       </HeadlessTransitionChild>
 
-      <div class="fixed inset-0 z-10 w-screen overflow-y-auto">
-        <div class="flex items-end justify-center min-h-full p-4 text-center sm:items-center sm:p-0">
+      <div class="fixed inset-0 z-30 w-screen overflow-y-auto">
+        <div class="flex items-center justify-center min-h-full p-4 text-center sm:p-0">
           <HeadlessTransitionChild
             as="template"
             enter="ease-out duration-300"
@@ -236,10 +238,10 @@ watch(
             >
               <div class="sm:flex sm:items-start">
                 <div
-                  class="flex items-center justify-center flex-shrink-0 w-12 h-12 mx-auto bg-red-100 rounded-full sm:mx-0 sm:h-10 sm:w-10"
+                  class="flex items-center justify-center flex-shrink-0 w-12 h-12 mx-auto rounded-full bg-primary-100 sm:mx-0 sm:h-10 sm:w-10"
                 >
                   <ExclamationTriangleIcon
-                    class="w-6 h-6 text-red-600"
+                    class="w-6 h-6 text-primary-500"
                     aria-hidden="true"
                   />
                 </div>
@@ -248,7 +250,7 @@ watch(
                     as="h3"
                     class="text-base font-semibold leading-6 text-gray-900"
                   >
-                    Delete {{ data.name }}
+                    Delete "{{ data.name }}" travel
                   </HeadlessDialogTitle>
                   <div class="mt-2">
                     <p class="text-sm text-gray-500">
@@ -260,7 +262,7 @@ watch(
               <div class="mt-5 sm:mt-4 sm:flex sm:flex-row-reverse">
                 <button
                   type="button"
-                  class="inline-flex justify-center w-full px-3 py-2 text-sm font-semibold text-white bg-red-600 rounded-md shadow-sm hover:bg-red-500 sm:ml-3 sm:w-auto"
+                  class="inline-flex justify-center w-full px-3 py-2 text-sm font-semibold text-white rounded-md shadow-sm bg-primary-500 hover:bg-primary-600 sm:ml-3 sm:w-auto"
                   @click="emit('deleteTravel', data.id)"
                 >
                   Delete Travel

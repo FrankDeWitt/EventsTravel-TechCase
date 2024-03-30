@@ -11,9 +11,9 @@ const emit = defineEmits<{
   (event: 'update:data', payload: Travel): void
 }>()
 
-const localData = ref({ ...props.data })
+const localData = ref<Travel>({ ...props.data })
 
-function updateField(fieldName: string, value: string | number) {
+const updateField = <K extends keyof Travel>(fieldName: K, value: Travel[K]) => {
   localData.value[fieldName] = value
   emit('update:data', localData.value)
 }

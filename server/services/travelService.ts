@@ -22,7 +22,7 @@ export async function editTravel(newTravelData: Travel): Promise<void> {
   }
 }
 export async function createTravel(newTravelData: Travel): Promise<void> {
-  const newId = travels.reduce((maxId, travel) => Math.max(maxId, travel.id), 0) + 1
+  const newId = travels.reduce((maxId, travel) => Math.max(maxId, travel.id ?? 0), 0) + 1
 
   if (newId !== -1) {
     travels.push({ ...newTravelData, id: newId })
