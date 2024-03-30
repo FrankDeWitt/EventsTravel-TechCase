@@ -15,7 +15,7 @@ const asideMenuOpen = ref(false)
       class="container flex items-center justify-between p-6 mx-auto lg:px-8"
       aria-label="Global"
     >
-      <div class="flex lg:flex-1">
+      <div class="z-10 flex lg:flex-1">
         <NuxtLink
           to="/"
           class="-m-1.5 p-1.5"
@@ -32,7 +32,7 @@ const asideMenuOpen = ref(false)
         >
           <span class="sr-only">Open main menu</span>
           <Bars3Icon
-            class="w-6 h-6"
+            class="w-12 h-12 md:w-8 md:h-8"
             aria-hidden="true"
           />
         </button>
@@ -53,7 +53,6 @@ const asideMenuOpen = ref(false)
         :open="asideMenuOpen"
         @close="asideMenuOpen = false"
       >
-        <div class="fixed inset-0 z-10" />
         <HeadlessTransitionChild
           enter="duration-300 ease-out"
           enter-from="opacity-0"
@@ -63,17 +62,16 @@ const asideMenuOpen = ref(false)
           leave-to="opacity-0"
         >
           <HeadlessDialogPanel
-            class="fixed inset-y-0 right-0 z-10 w-full px-6 py-6 overflow-y-auto bg-white sm:max-w-sm sm:ring-1 sm:ring-gray-900/10"
+            class="fixed top-0 right-0 z-0 w-full px-6 py-6 overflow-y-auto bg-white shadow-sm bottom-2/3 sm:inset-y-0 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10"
           >
-            <div class="flex items-center justify-between">
+            <div class="flex flex-row-reverse items-center justify-between">
               <button
-                type="button"
                 class="-m-2.5 rounded-md p-2.5 text-gray-700"
                 @click="asideMenuOpen = false"
               >
                 <span class="sr-only">Close menu</span>
                 <XMarkIcon
-                  class="w-6 h-6"
+                  class="w-12 h-12 md:w-8 md:h-8"
                   aria-hidden="true"
                 />
               </button>
@@ -85,7 +83,7 @@ const asideMenuOpen = ref(false)
                     v-for="item in navigation"
                     :key="item.name"
                     :to="item.href"
-                    class="block px-3 py-2 -mx-3 text-base font-semibold leading-7 text-gray-900 rounded-lg hover:bg-gray-50"
+                    class="block px-3 py-2 -mx-3 text-xl font-semibold leading-7 text-gray-900 rounded-lg hover:bg-primary-50"
                     @click="asideMenuOpen = false"
                   >
                     {{ item.name }}

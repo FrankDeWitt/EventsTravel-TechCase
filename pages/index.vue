@@ -81,7 +81,7 @@ const resetFitlers = () => {
         </li>
       </template>
       <template v-else>
-        <div class="text-center">
+        <div class="col-span-3 text-center">
           <h1 class="mt-4 text-3xl font-bold tracking-tight text-gray-900 sm:text-5xl">
             Travels Not Found
           </h1>

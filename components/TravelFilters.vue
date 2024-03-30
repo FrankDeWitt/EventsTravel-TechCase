@@ -4,6 +4,7 @@ import type { Query } from '@/types'
 const emit = defineEmits<{
   (event: 'queryFilters', payload: Query): void
 }>()
+
 const searchQuery = ref('')
 const priceRange = ref<number | undefined>(2500)
 const rating = ref<number | null>(null)
@@ -19,6 +20,7 @@ const reset = () => {
   priceRange.value = 2500
   rating.value = null
 }
+
 watch(query, (newValue: Query) => {
   emit('queryFilters', newValue)
 })
@@ -83,7 +85,7 @@ defineExpose({ reset })
       </div>
       <div class="flex items-center w-full mt-2 lg:w-auto lg:ml-auto">
         <button
-          class="w-full lg:w-auto rounded-md text-gray-900 bg-white shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 px-3.5 py-2.5 text-sm font-semibold hover:bg-white-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+          class="w-full lg:w-auto rounded-md text-gray-900 bg-white shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 px-3.5 py-2.5 text-sm font-semibold hover:bg-white-600"
           @click="reset()"
         >
           Reset Filters
