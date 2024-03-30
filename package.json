@@ -14,7 +14,6 @@
     "lintfix": "prettier --write --list-different . && bun run lint:ts --fix"
   },
   "dependencies": {
-    "@headlessui/vue": "^1.7.19",
     "@heroicons/vue": "^2.1.3",
     "@nuxt/eslint-config": "^0.2.0",
     "@nuxt/image": "latest",
@@ -34,6 +33,7 @@
   },
   "devDependencies": {
     "@rollup/plugin-json": "^6.1.0",
+    "nuxt-headlessui": "^1.1.5",
     "nuxt-primevue": "^0.3.1"
   }
 }

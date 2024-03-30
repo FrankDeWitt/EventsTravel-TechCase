@@ -1,7 +1,6 @@
 <script lang="ts" setup>
 import TravelFilters from '@/components/TravelFilters.vue'
 
-import { Dialog, DialogPanel, DialogTitle, TransitionChild, TransitionRoot } from '@headlessui/vue'
 import { PlusIcon } from '@heroicons/vue/24/outline'
 
 import type { Travel } from '@/types'
@@ -111,16 +110,16 @@ const resetFitlers = () => {
         aria-hidden="true"
       />
     </button>
-    <TransitionRoot
+    <HeadlessTransitionRoot
       as="template"
       :show="open"
     >
-      <Dialog
+      <HeadlessDialog
         as="div"
         class="relative z-10"
         @close="open = false"
       >
-        <TransitionChild
+        <HeadlessTransitionChild
           as="template"
           enter="ease-out duration-300"
           enter-from="opacity-0"
@@ -130,11 +129,11 @@ const resetFitlers = () => {
           leave-to="opacity-0"
         >
           <div class="fixed inset-0 transition-opacity bg-gray-500 bg-opacity-75" />
-        </TransitionChild>
+        </HeadlessTransitionChild>
 
         <div class="fixed inset-0 z-10 w-screen overflow-y-auto">
           <div class="flex items-end justify-center min-h-full p-4 text-center sm:items-center sm:p-0">
-            <TransitionChild
+            <HeadlessTransitionChild
               as="template"
               enter="ease-out duration-300"
               enter-from="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
@@ -143,17 +142,17 @@ const resetFitlers = () => {
               leave-from="opacity-100 translate-y-0 sm:scale-100"
               leave-to="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
             >
-              <DialogPanel
+              <HeadlessDialogPanel
                 class="relative w-full px-4 pt-5 pb-4 overflow-hidden text-left transition-all transform bg-white rounded-lg shadow-xl sm:my-8 sm:w-full sm:max-w-md lg:max-w-2xl sm:p-6"
               >
                 <div>
                   <div class="text-center">
-                    <DialogTitle
+                    <HeadlessDialogTitle
                       as="h3"
                       class="text-base font-semibold leading-6 text-gray-900"
                     >
                       Create new travel
-                    </DialogTitle>
+                    </HeadlessDialogTitle>
                     <TravelForm
                       :data="tempData"
                       @update:data="handleUpdate"
@@ -176,11 +175,11 @@ const resetFitlers = () => {
                     Save
                   </button>
                 </div>
-              </DialogPanel>
-            </TransitionChild>
+              </HeadlessDialogPanel>
+            </HeadlessTransitionChild>
           </div>
         </div>
-      </Dialog>
-    </TransitionRoot>
+      </HeadlessDialog>
+    </HeadlessTransitionRoot>
   </div>
 </template>

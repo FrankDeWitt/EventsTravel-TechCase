@@ -1,7 +1,7 @@
 import * as path from 'path'
 
 export default defineNuxtConfig({
-  modules: ['@nuxtjs/tailwindcss', '@nuxt/image', 'nuxt-primevue'],
+  modules: ['@nuxtjs/tailwindcss', '@nuxt/image', 'nuxt-primevue', 'nuxt-headlessui'],
   primevue: {
     options: {
       unstyled: true,
@@ -9,5 +9,8 @@ export default defineNuxtConfig({
     importPT: { from: path.resolve(__dirname, './presets/lara/') }, //import and apply preset
   },
   css: ['~/assets/css/base.css'],
+  headlessui: {
+    prefix: 'Headless',
+  },
   devtools: { enabled: true },
 })

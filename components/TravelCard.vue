@@ -1,15 +1,4 @@
 <script lang="ts" setup>
-import {
-  Menu,
-  MenuButton,
-  MenuItem,
-  MenuItems,
-  Dialog,
-  DialogPanel,
-  DialogTitle,
-  TransitionChild,
-  TransitionRoot,
-} from '@headlessui/vue'
 import { EllipsisVerticalIcon, StarIcon, ExclamationTriangleIcon } from '@heroicons/vue/20/solid'
 
 import type { Travel } from '@/types'
@@ -67,17 +56,17 @@ watch(
         {{ data.name }}
       </h3>
       <div class="flex items-center flex-none gap-x-4">
-        <Menu
+        <HeadlessMenu
           as="div"
           class="relative flex-none"
         >
-          <MenuButton class="-m-2.5 block p-2.5 text-gray-500 hover:text-gray-900">
+          <HeadlessMenuButton class="-m-2.5 block p-2.5 text-gray-500 hover:text-gray-900">
             <span class="sr-only">Open options</span>
             <EllipsisVerticalIcon
               class="w-5 h-5"
               aria-hidden="true"
             />
-          </MenuButton>
+          </HeadlessMenuButton>
           <transition
             enter-active-class="transition duration-100 ease-out"
             enter-from-class="transform scale-95 opacity-0"
@@ -86,28 +75,28 @@ watch(
             leave-from-class="transform scale-100 opacity-100"
             leave-to-class="transform scale-95 opacity-0"
           >
-            <MenuItems
+            <HeadlessMenuItems
               class="absolute right-0 z-10 w-32 py-2 mt-2 origin-top-right bg-white rounded-md shadow-lg ring-1 ring-gray-900/5 focus:outline-none"
             >
-              <MenuItem v-slot="{ active }">
+              <HeadlessMenuItem v-slot="{ active }">
                 <span
                   :class="[active ? 'bg-gray-50' : '', 'block px-3 py-1 text-sm leading-6 text-gray-900']"
                   @click="open = !open"
                 >
                   Edit<span class="sr-only">, {{ data.name }}</span>
                 </span>
-              </MenuItem>
-              <MenuItem v-slot="{ active }">
+              </HeadlessMenuItem>
+              <HeadlessMenuItem v-slot="{ active }">
                 <span
                   :class="[active ? 'bg-gray-50' : '', 'block px-3 py-1 text-sm leading-6 text-gray-900']"
                   @click="openConfirmation = true"
                 >
                   Delete<span class="sr-only">, {{ data.name }}</span>
                 </span>
-              </MenuItem>
-            </MenuItems>
+              </HeadlessMenuItem>
+            </HeadlessMenuItems>
           </transition>
-        </Menu>
+        </HeadlessMenu>
       </div>
     </div>
     <div class="flex items-center text-xs leading-5 text-gray-500 gap-x-2">
@@ -133,16 +122,16 @@ watch(
       <p class="font-bold text-wr-red">{{ data.price }}€</p>
     </div>
   </div>
-  <TransitionRoot
+  <HeadlessTransitionRoot
     as="template"
     :show="open"
   >
-    <Dialog
+    <HeadlessDialog
       as="div"
       class="relative z-10"
       @close="open = false"
     >
-      <TransitionChild
+      <HeadlessTransitionChild
         as="template"
         enter="ease-out duration-300"
         enter-from="opacity-0"
@@ -152,11 +141,11 @@ watch(
         leave-to="opacity-0"
       >
         <div class="fixed inset-0 transition-opacity bg-gray-500 bg-opacity-75" />
-      </TransitionChild>
+      </HeadlessTransitionChild>
 
       <div class="fixed inset-0 z-10 w-screen overflow-y-auto">
         <div class="flex items-end justify-center min-h-full p-4 text-center sm:items-center sm:p-0">
-          <TransitionChild
+          <HeadlessTransitionChild
             as="template"
             enter="ease-out duration-300"
             enter-from="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
@@ -165,17 +154,17 @@ watch(
             leave-from="opacity-100 translate-y-0 sm:scale-100"
             leave-to="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
           >
-            <DialogPanel
+            <HeadlessDialogPanel
               class="relative w-full px-4 pt-5 pb-4 overflow-hidden text-left transition-all transform bg-white rounded-lg shadow-xl sm:my-8 sm:w-full sm:max-w-md lg:max-w-2xl sm:p-6"
             >
               <div>
                 <div class="text-center">
-                  <DialogTitle
+                  <HeadlessDialogTitle
                     as="h3"
                     class="text-base font-semibold leading-6 text-gray-900"
                   >
                     Edit travel
-                  </DialogTitle>
+                  </HeadlessDialogTitle>
                   <TravelForm
                     :data="tempData"
                     @update:data="handleUpdate"
@@ -198,22 +187,22 @@ watch(
                   Save
                 </button>
               </div>
-            </DialogPanel>
-          </TransitionChild>
+            </HeadlessDialogPanel>
+          </HeadlessTransitionChild>
         </div>
       </div>
-    </Dialog>
-  </TransitionRoot>
-  <TransitionRoot
+    </HeadlessDialog>
+  </HeadlessTransitionRoot>
+  <HeadlessTransitionRoot
     as="template"
     :show="openConfirmation"
   >
-    <Dialog
+    <HeadlessDialog
       as="div"
       class="relative z-10"
       @close="openConfirmation = false"
     >
-      <TransitionChild
+      <HeadlessTransitionChild
         as="template"
         enter="ease-out duration-300"
         enter-from="opacity-0"
@@ -223,11 +212,11 @@ watch(
         leave-to="opacity-0"
       >
         <div class="fixed inset-0 transition-opacity bg-gray-500 bg-opacity-75" />
-      </TransitionChild>
+      </HeadlessTransitionChild>
 
       <div class="fixed inset-0 z-10 w-screen overflow-y-auto">
         <div class="flex items-end justify-center min-h-full p-4 text-center sm:items-center sm:p-0">
-          <TransitionChild
+          <HeadlessTransitionChild
             as="template"
             enter="ease-out duration-300"
             enter-from="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
@@ -236,7 +225,7 @@ watch(
             leave-from="opacity-100 translate-y-0 sm:scale-100"
             leave-to="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
           >
-            <DialogPanel
+            <HeadlessDialogPanel
               class="relative px-4 pt-5 pb-4 overflow-hidden text-left transition-all transform bg-white rounded-lg shadow-xl sm:my-8 sm:w-full sm:max-w-lg sm:p-6"
             >
               <div class="sm:flex sm:items-start">
@@ -249,12 +238,12 @@ watch(
                   />
                 </div>
                 <div class="mt-3 text-center sm:ml-4 sm:mt-0 sm:text-left">
-                  <DialogTitle
+                  <HeadlessDialogTitle
                     as="h3"
                     class="text-base font-semibold leading-6 text-gray-900"
                   >
                     Delete {{ data.name }}
-                  </DialogTitle>
+                  </HeadlessDialogTitle>
                   <div class="mt-2">
                     <p class="text-sm text-gray-500">Are you sure you want to delete this travel?</p>
                   </div>
@@ -276,10 +265,10 @@ watch(
                   Cancel
                 </button>
               </div>
-            </DialogPanel>
-          </TransitionChild>
+            </HeadlessDialogPanel>
+          </HeadlessTransitionChild>
         </div>
       </div>
-    </Dialog>
-  </TransitionRoot>
+    </HeadlessDialog>
+  </HeadlessTransitionRoot>
 </template>
