@@ -21,3 +21,13 @@ export async function editTravel(newTravelData: Travel): Promise<void> {
     console.log(`Travel with id ${newTravelData.id} not found.`)
   }
 }
+export async function createTravel(newTravelData: Travel): Promise<void> {
+  const newId = travels.reduce((maxId, travel) => Math.max(maxId, travel.id), 0) + 1
+
+  if (newId !== -1) {
+    travels.push({ ...newTravelData, id: newId })
+    console.log(`🚀 ~ Travel with id ${newId} has been uploaded.`)
+  } else {
+    console.log(`An error occurred while uploading the travel.`)
+  }
+}
