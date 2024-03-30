@@ -1,0 +1,31 @@
+<template>
+  <div>
+    <Skeleton
+      height="14rem"
+      class="mb-2"
+    />
+    <div class="p-4">
+      <Skeleton
+        width="10rem"
+        class="mb-2"
+      />
+      <Skeleton
+        width="5rem"
+        class="mb-2"
+      />
+      <Skeleton
+        height="2rem"
+        class="mb-2"
+      />
+      <div class="flex justify-between">
+        <Skeleton
+          width="5rem"
+          class="mb-2"
+        /><Skeleton
+          width="5rem"
+          class="mb-2"
+        />
+      </div>
+    </div>
+  </div>
+</template>

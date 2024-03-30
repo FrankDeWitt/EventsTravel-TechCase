@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { Dialog, DialogPanel, TransitionRoot, TransitionChild } from '@headlessui/vue'
+// import { Dialog, DialogPanel, TransitionRoot, TransitionChild } from '@headlessui/vue'
 import { Bars3Icon, XMarkIcon } from '@heroicons/vue/24/outline'
 
 const navigation = [
@@ -13,7 +13,7 @@ const asideMenuOpen = ref(false)
 <template>
   <header class="bg-white">
     <nav
-      class="mx-auto flex container items-center justify-between p-6 lg:px-8"
+      class="container flex items-center justify-between p-6 mx-auto lg:px-8"
       aria-label="Global"
     >
       <div class="flex lg:flex-1">
@@ -33,7 +33,7 @@ const asideMenuOpen = ref(false)
         >
           <span class="sr-only">Open main menu</span>
           <Bars3Icon
-            class="h-6 w-6"
+            class="w-6 h-6"
             aria-hidden="true"
           />
         </button>
@@ -64,7 +64,7 @@ const asideMenuOpen = ref(false)
           leave-to="opacity-0"
         >
           <DialogPanel
-            class="fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10"
+            class="fixed inset-y-0 right-0 z-10 w-full px-6 py-6 overflow-y-auto bg-white sm:max-w-sm sm:ring-1 sm:ring-gray-900/10"
           >
             <div class="flex items-center justify-between">
               <button
@@ -74,19 +74,19 @@ const asideMenuOpen = ref(false)
               >
                 <span class="sr-only">Close menu</span>
                 <XMarkIcon
-                  class="h-6 w-6"
+                  class="w-6 h-6"
                   aria-hidden="true"
                 />
               </button>
             </div>
-            <div class="mt-6 flow-root">
+            <div class="flow-root mt-6">
               <div class="-my-6 divide-y divide-gray-500/10">
-                <div class="space-y-2 py-6">
+                <div class="py-6 space-y-2">
                   <NuxtLink
                     v-for="item in navigation"
                     :key="item.name"
                     :to="item.href"
-                    class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                    class="block px-3 py-2 -mx-3 text-base font-semibold leading-7 text-gray-900 rounded-lg hover:bg-gray-50"
                     @click="asideMenuOpen = false"
                   >
                     {{ item.name }}

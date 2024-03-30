@@ -1,4 +1,6 @@
 <script lang="ts" setup>
+import TravelFilters from '@/components/TravelFilters.vue'
+
 import { Dialog, DialogPanel, DialogTitle, TransitionChild, TransitionRoot } from '@headlessui/vue'
 import { PlusIcon } from '@heroicons/vue/24/outline'
 
@@ -6,9 +8,11 @@ import type { Travel } from '@/types'
 
 const query = ref({})
 
-const { travels, pending, refresh } = await useGetTravels(query)
+const { travels, pending, refresh } = useGetTravels(query)
 
 const open = ref(false)
+const filtersRef = ref<typeof TravelFilters | null>(null)
+
 const tempData = reactive({
   name: '',
   description: '',
@@ -31,37 +35,72 @@ const handleEdit = async (travelData: Travel) => {
   refresh()
 }
 const handleCreate = async () => {
-  console.log('🚀 ~ tempData:', tempData)
   await useCreateTravel(tempData)
+  resetFitlers()
   refresh()
+}
+const resetFitlers = () => {
+  if (filtersRef.value) {
+    filtersRef.value?.reset()
+  }
 }
 </script>
 <template>
   <div>
-    <p class="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
-      Travels
-    </p>
+    <p class="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Travels</p>
     <TravelFilters
+      ref="filtersRef"
       :data="travels"
       @query-filters="query = $event"
     />
-
     <ul
       class="grid justify-center grid-cols-1 md:grid-cols-2 lg:grid-cols-3 grid-auto-columns-1/2 lg:grid-auto-columns-1/3 gap-x-3 auto-rows-fr gap-y-5"
       role="list"
     >
-      <li
-        v-for="travel in travels"
-        :key="travel.id"
-        class="overflow-hidden rounded shadow-lg gap-x-6 rounded-b-2xl"
-      >
-        <TravelCard
-          :data="travel"
-          :loading="pending"
-          @delete-travel="handleDelete"
-          @edit-travel="handleEdit"
-        />
-      </li>
+      <template v-if="pending">
+        <div
+          v-for="item in 6"
+          :key="item"
+        >
+          <TravelSkeleton />
+        </div>
+      </template>
+      <template v-else-if="!pending && travels.length > 0">
+        <li
+          v-for="travel in travels"
+          :key="travel.id"
+          class="overflow-hidden rounded shadow-lg gap-x-6 rounded-b-2xl"
+        >
+          <TravelCard
+            :data="travel"
+            :loading="pending"
+            @delete-travel="handleDelete"
+            @edit-travel="handleEdit"
+          />
+        </li>
+      </template>
+      <template v-else>
+        <div class="text-center">
+          <h1 class="mt-4 text-3xl font-bold tracking-tight text-gray-900 sm:text-5xl">Travels Not Found</h1>
+          <p class="mt-6 text-base leading-7 text-gray-600">
+            Oops, it seems there are no travels matching your search criteria.
+          </p>
+          <div class="flex items-center justify-center mt-10 gap-x-6">
+            <button
+              class="rounded-md bg-wr-red px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-red-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+              @click="open = true"
+            >
+              Add New Travel
+            </button>
+            <button
+              class="rounded-md text-gray-900 bg-white shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 px-3.5 py-2.5 text-sm font-semibold hover:bg-white-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+              @click="resetFitlers"
+            >
+              Reset Filters
+            </button>
+          </div>
+        </div>
+      </template>
     </ul>
     <button
       class="fixed bottom-0 right-0 flex items-center justify-center w-12 h-12 mb-10 mr-10 rounded-full shadow-sm bg-wr-red hover:bg-red-600"
@@ -105,10 +144,10 @@ const handleCreate = async () => {
               leave-to="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
             >
               <DialogPanel
-                class="relative px-4 pt-5 pb-4 overflow-hidden text-left transition-all transform bg-white rounded-lg shadow-xl sm:my-8 sm:w-full sm:max-w-md sm:p-6"
+                class="relative w-full px-4 pt-5 pb-4 overflow-hidden text-left transition-all transform bg-white rounded-lg shadow-xl sm:my-8 sm:w-full sm:max-w-md lg:max-w-2xl sm:p-6"
               >
                 <div>
-                  <div class="mt-3 text-center sm:mt-5">
+                  <div class="text-center">
                     <DialogTitle
                       as="h3"
                       class="text-base font-semibold leading-6 text-gray-900"
@@ -124,7 +163,7 @@ const handleCreate = async () => {
                 <div class="flex gap-3 mt-5 sm:mt-6">
                   <button
                     type="button"
-                    class="inline-flex justify-center w-full px-3 py-2 mt-3 text-sm font-semibold text-gray-900 bg-white rounded-md shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:mt-0"
+                    class="inline-flex justify-center w-full px-3 py-2 text-sm font-semibold text-gray-900 bg-white rounded-md shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:mt-0"
                     @click="open = false"
                   >
                     Cancel
@@ -132,7 +171,7 @@ const handleCreate = async () => {
                   <button
                     type="button"
                     class="inline-flex justify-center w-full px-3 py-2 text-sm font-semibold text-white bg-green-600 rounded-md shadow-sm hover:bg-green-500 sm:ml-3"
-                    @click="handleCreate(), (open = true)"
+                    @click="handleCreate(), (open = false)"
                   >
                     Save
                   </button>

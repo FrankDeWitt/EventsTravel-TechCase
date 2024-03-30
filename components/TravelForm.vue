@@ -24,12 +24,12 @@ watchEffect(() => {
 </script>
 <template>
   <form>
-    <div class="border-b border-gray-900/10 pb-12">
-      <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
+    <div class="pb-4 border-b lg:pb-12 border-gray-900/10">
+      <div class="grid lg:mt-10 gap-x-6 gap-y-4 lg:gap-y-8 sm:grid-cols-6">
         <div class="sm:col-span-6">
           <label
             for="name"
-            class="block text-sm font-medium leading-6 text-gray-900 text-left"
+            class="block text-sm font-medium leading-6 text-left text-gray-900"
           >
             Travel name
           </label>
@@ -43,49 +43,51 @@ watchEffect(() => {
         <div class="sm:col-span-6">
           <label
             for="description"
-            class="block text-sm font-medium leading-6 text-gray-900 text-left"
+            class="block text-sm font-medium leading-6 text-left text-gray-900"
           >
             Travel description
           </label>
           <Textarea
             id="description"
             :value="localData.description"
-            class="w-full h-32"
+            class="w-full h-24 lg:h-32"
             @update:model-value="updateField('description', $event)"
           />
         </div>
-        <div class="sm:col-span-3">
+        <div class="text-left sm:col-span-3">
           <label
             for="departure"
-            class="block text-sm font-medium leading-6 text-gray-900 text-left"
+            class="block text-sm font-medium leading-6 text-left text-gray-900"
           >
             Departure date
           </label>
           <Calendar
             id="departure"
             date-format="dd/mm/yy"
+            class="w-full"
             :model-value="localData.departureDate"
             @update:model-value="updateField('departureDate', dayjs($event).format('DD/MM/YYYY'))"
           />
         </div>
-        <div class="sm:col-span-3">
+        <div class="text-left sm:col-span-3">
           <label
             for="return"
-            class="block text-sm font-medium leading-6 text-gray-900 text-left"
+            class="block text-sm font-medium leading-6 text-left text-gray-900"
           >
             Return date
           </label>
           <Calendar
             id="return"
             date-format="dd/mm/yy"
+            class="w-full"
             :model-value="localData.returnDate"
             @update:model-value="updateField('returnDate', dayjs($event).format('DD/MM/YYYY'))"
           />
         </div>
-        <div class="sm:col-span-6">
+        <div class="text-left sm:col-span-6">
           <label
             for="picture"
-            class="block text-sm font-medium leading-6 text-gray-900 text-left"
+            class="block text-sm font-medium leading-6 text-left text-gray-900"
           >
             Travel picture
           </label>
@@ -99,7 +101,7 @@ watchEffect(() => {
         <div class="sm:col-span-3">
           <label
             for="rating"
-            class="block text-sm font-medium leading-6 text-gray-900 text-left"
+            class="block text-sm font-medium leading-6 text-left text-gray-900"
           >
             Rating
           </label>
@@ -111,15 +113,16 @@ watchEffect(() => {
             @update:model-value="updateField('averageRating', $event)"
           />
         </div>
-        <div class="sm:col-span-3">
+        <div class="text-left sm:col-span-3">
           <label
             for="price"
-            class="block text-sm font-medium leading-6 text-gray-900 text-left"
+            class="block text-sm font-medium leading-6 text-left text-gray-900"
           >
             Travel price
           </label>
           <InputNumber
             id="price"
+            class="w-full"
             :model-value="localData.price"
             @update:model-value="updateField('price', $event)"
           />
