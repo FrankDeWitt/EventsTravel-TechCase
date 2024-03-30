@@ -10,3 +10,9 @@ export interface Travel {
 }
 
 export type Travels = Travel[]
+
+export type Query = {
+  q: string
+  price: number | undefined
+  rating: number | null
+}
