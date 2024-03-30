@@ -5,7 +5,5 @@ import type { Travels } from '@/types'
 allTravels as Travels
 
 export default defineEventHandler(async () => {
-  return {
-    allTravels,
-  }
+  return allTravels
 })
