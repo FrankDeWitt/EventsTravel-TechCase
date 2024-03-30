@@ -100,9 +100,13 @@ watch(
       </div>
     </div>
     <div class="flex items-center text-xs leading-5 text-gray-500 gap-x-2">
-      <p class="whitespace-nowrap">Departure {{ data.departureDate }}</p>
+      <p class="whitespace-nowrap">
+        Departure {{ data.departureDate }}
+      </p>
       -
-      <p class="whitespace-nowrap">Return {{ data.returnDate }}</p>
+      <p class="whitespace-nowrap">
+        Return {{ data.returnDate }}
+      </p>
     </div>
     <p class="mt-2 text-base leading-7 text-gray-600">
       {{ data.description }}
@@ -119,7 +123,9 @@ watch(
         </div>
         <p>{{ data.averageRating }} out of 5 stars</p>
       </div>
-      <p class="font-bold text-wr-red">{{ data.price }}€</p>
+      <p class="font-bold text-wr-red">
+        {{ data.price }}€
+      </p>
     </div>
   </div>
   <HeadlessTransitionRoot
@@ -245,7 +251,9 @@ watch(
                     Delete {{ data.name }}
                   </HeadlessDialogTitle>
                   <div class="mt-2">
-                    <p class="text-sm text-gray-500">Are you sure you want to delete this travel?</p>
+                    <p class="text-sm text-gray-500">
+                      Are you sure you want to delete this travel?
+                    </p>
                   </div>
                 </div>
               </div>

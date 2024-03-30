@@ -46,7 +46,9 @@ const resetFitlers = () => {
 </script>
 <template>
   <div>
-    <p class="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Travels</p>
+    <p class="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+      Travels
+    </p>
     <TravelFilters
       ref="filtersRef"
       :data="travels"
@@ -80,7 +82,9 @@ const resetFitlers = () => {
       </template>
       <template v-else>
         <div class="text-center">
-          <h1 class="mt-4 text-3xl font-bold tracking-tight text-gray-900 sm:text-5xl">Travels Not Found</h1>
+          <h1 class="mt-4 text-3xl font-bold tracking-tight text-gray-900 sm:text-5xl">
+            Travels Not Found
+          </h1>
           <p class="mt-6 text-base leading-7 text-gray-600">
             Oops, it seems there are no travels matching your search criteria.
           </p>
