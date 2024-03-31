@@ -21,7 +21,7 @@ const asideMenuOpen = ref(false)
           class="-m-1.5 p-1.5"
         >
           <span class="sr-only">WeRoad</span>
-          <TheLogo />
+          <GlobalLogo />
         </NuxtLink>
       </div>
       <div class="flex">
@@ -39,14 +39,8 @@ const asideMenuOpen = ref(false)
       </div>
     </nav>
     <HeadlessTransitionRoot
-      :show="asideMenuOpen"
       as="template"
-      enter="duration-300 ease-out"
-      enter-from="opacity-0"
-      enter-to="opacity-100"
-      leave="duration-200 ease-in"
-      leave-from="opacity-100"
-      leave-to="opacity-0"
+      :show="asideMenuOpen"
     >
       <HeadlessDialog
         as="div"

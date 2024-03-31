@@ -62,62 +62,70 @@ const getTravelNameById = (travelId: number) => {
         </button>
       </div>
     </template>
-    <template #empty> No customers found. </template>
-    <template #loading> Loading customers data. Please wait. </template>
+    <template #empty>
+      No customers found.
+    </template>
+    <template #loading>
+      Loading customers data. Please wait.
+    </template>
     <Column
       field="firstName"
       header="Name"
+      sortable
     >
-      <template #body="{ data }">
-        {{ data.firstName }}
+      <template #body="{ data: firstNameData }">
+        {{ firstNameData.firstName }}
       </template>
     </Column>
     <Column
       field="lastName"
       header="Last Name"
+      sortable
     >
-      <template #body="{ data }">
-        {{ data.lastName }}
+      <template #body="{ data: lastNameData }">
+        {{ lastNameData.lastName }}
       </template>
     </Column>
     <Column
       field="email"
       header="Email"
+      sortable
     >
-      <template #body="{ data }">
-        {{ data.email }}
+      <template #body="{ data: emailData }">
+        {{ emailData.email }}
       </template>
     </Column>
     <Column
       field="phoneNumber"
       header="Phone number"
     >
-      <template #body="{ data }">
-        {{ data.phoneNumber }}
+      <template #body="{ data: phoneNumberData }">
+        {{ phoneNumberData.phoneNumber }}
       </template>
     </Column>
     <Column
       field="birthDate"
       header="Age"
     >
-      <template #body="{ data }">
-        {{ calculateAge(data.birthDate) }}
+      <template #body="{ data: birthDateData }">
+        {{ calculateAge(birthDateData.birthDate) }}
       </template>
     </Column>
     <Column
       field="gender"
       header="Gender"
     >
-      <template #body="{ data }">
-        {{ data.gender }}
+      <template #body="{ data: genderData }">
+        {{ genderData.gender }}
       </template>
     </Column>
     <Column
       field="paymentMethod"
       header="Payment method"
+      sortable
     >
-      <template #body="{ data }">
-        {{ data.paymentMethod }}
+      <template #body="{ data: paymentMethodData }">
+        {{ paymentMethodData.paymentMethod }}
       </template>
     </Column>
     <Column
@@ -125,16 +133,16 @@ const getTravelNameById = (travelId: number) => {
       header="Travel purchase"
       sortable
     >
-      <template #body="{ data }">
-        {{ getTravelNameById(data.travelId) }}
+      <template #body="{ data: travelIdData }">
+        {{ getTravelNameById(travelIdData.travelId) }}
       </template>
     </Column>
     <Column
       field="notes"
       header="Notes"
     >
-      <template #body="{ data }">
-        {{ data.notes }}
+      <template #body="{ data: notesData }">
+        {{ notesData.notes }}
       </template>
     </Column>
   </DataTable>
