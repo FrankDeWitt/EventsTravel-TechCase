@@ -32,7 +32,7 @@ const asideMenuOpen = ref(false)
         >
           <span class="sr-only">Open main menu</span>
           <Bars3Icon
-            class="w-12 h-12 md:w-8 md:h-8"
+            class="w-10 h-10 md:w-8 md:h-8"
             aria-hidden="true"
           />
         </button>
@@ -71,7 +71,7 @@ const asideMenuOpen = ref(false)
               >
                 <span class="sr-only">Close menu</span>
                 <XMarkIcon
-                  class="w-12 h-12 md:w-8 md:h-8"
+                  class="w-10 h-10 md:w-8 md:h-8"
                   aria-hidden="true"
                 />
               </button>

@@ -12,8 +12,12 @@
 
 <style scoped>
 .body-wrapper {
-  display: grid;
-  grid-template-rows: min-content auto min-content;
-  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  @media screen(lg) {
+    display: grid;
+    grid-template-rows: min-content auto min-content;
+    height: 100vh;
+  }
 }
 </style>
