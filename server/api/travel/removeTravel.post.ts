@@ -1,6 +1,8 @@
 import { removeTravel } from '../../services/travelService'
 
-export default async function eventHandler(event): Promise<boolean> {
+import type { H3Event } from 'h3'
+
+export default async function eventHandler(event: H3Event): Promise<boolean> {
   const payload = await readBody(event)
   const idToRemove = payload.id
 

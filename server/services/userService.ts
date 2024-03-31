@@ -1,7 +1,7 @@
 import staticUsers from '../usersData'
 import type { Users, User } from '@/types'
 
-const users: Users = [...staticUsers]
+const users: Users = staticUsers as Users
 
 export function getUsers(): Users {
   return users
