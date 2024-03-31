@@ -67,13 +67,14 @@ watch(
               aria-hidden="true"
             />
           </HeadlessMenuButton>
-          <transition
-            enter-active-class="transition duration-100 ease-out"
-            enter-from-class="transform scale-95 opacity-0"
-            enter-to-class="transform scale-100 opacity-100"
-            leave-active-class="transition duration-75 ease-in"
-            leave-from-class="transform scale-100 opacity-100"
-            leave-to-class="transform scale-95 opacity-0"
+          <HeadlessTransitionRoot
+            as="template"
+            enter="duration-300 ease-out"
+            enter-from="opacity-0"
+            enter-to="opacity-100"
+            leave="duration-200 ease-in"
+            leave-from="opacity-100"
+            leave-to="opacity-0"
           >
             <HeadlessMenuItems
               class="absolute right-0 z-10 w-32 py-2 mt-2 origin-top-right bg-white rounded-md shadow-lg ring-1 ring-gray-900/5 focus:outline-none"
@@ -95,18 +96,14 @@ watch(
                 </span>
               </HeadlessMenuItem>
             </HeadlessMenuItems>
-          </transition>
+          </HeadlessTransitionRoot>
         </HeadlessMenu>
       </div>
     </div>
     <div class="flex flex-wrap items-center text-xs leading-5 text-gray-500 gap-x-2">
-      <p class="whitespace-nowrap">
-        Departure {{ data.departureDate }}
-      </p>
+      <p class="whitespace-nowrap">Departure {{ data.departureDate }}</p>
       -
-      <p class="whitespace-nowrap">
-        Return {{ data.returnDate }}
-      </p>
+      <p class="whitespace-nowrap">Return {{ data.returnDate }}</p>
     </div>
     <p class="mt-2 text-base leading-7 text-gray-600">
       {{ data.description }}
@@ -121,13 +118,9 @@ watch(
             aria-hidden="true"
           />
         </div>
-        <p class="hidden md:block lg:hidden xl:block">
-          {{ data.averageRating }} out of 5 stars
-        </p>
+        <p class="hidden md:block lg:hidden xl:block">{{ data.averageRating }} out of 5 stars</p>
       </div>
-      <p class="font-bold text-wr-red">
-        {{ data.price }}€
-      </p>
+      <p class="font-bold text-wr-red">{{ data.price }}€</p>
     </div>
   </div>
   <HeadlessTransitionRoot

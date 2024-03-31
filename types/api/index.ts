@@ -1,3 +1,9 @@
+export enum PaymentMethodValue {
+  Paypal = 'Paypal',
+  Revolut = 'Revolut',
+  BankTransfer = 'Bank Transfer',
+}
+
 export interface Travel {
   id?: number
   name: string
@@ -23,9 +29,9 @@ export interface User {
   lastName: string
   email: string
   phoneNumber: string
-  birthdate: string | undefined
+  birthDate: string | undefined
   gender: 'Male' | 'Female' | null
-  paymentMethod: 'Paypal' | 'Revolut' | 'Bank transfer'
+  paymentMethod: PaymentMethodValue
   travelId: number | null
   notes?: string
 }

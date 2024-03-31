@@ -9,7 +9,7 @@ const props = defineProps<{
 }>()
 
 const emit = defineEmits<{
-  (event: 'createUSer', payload: boolean): void
+  (event: 'createUser', payload: boolean): void
 }>()
 
 const { calculateAge } = useValidations()
@@ -56,18 +56,14 @@ const getTravelNameById = (travelId: number) => {
         <button
           type="button"
           class="justify-center px-3 py-2 text-sm font-semibold text-white rounded-md shadow-sm bg-primary-500 hover:bg-primary-600"
-          @click="emit('createUSer', true)"
+          @click="emit('createUser', true)"
         >
           Add new user
         </button>
       </div>
     </template>
-    <template #empty>
-      No customers found.
-    </template>
-    <template #loading>
-      Loading customers data. Please wait.
-    </template>
+    <template #empty> No customers found. </template>
+    <template #loading> Loading customers data. Please wait. </template>
     <Column
       field="firstName"
       header="Name"
@@ -101,7 +97,7 @@ const getTravelNameById = (travelId: number) => {
       </template>
     </Column>
     <Column
-      field="birthdate"
+      field="birthDate"
       header="Age"
     >
       <template #body="{ data }">

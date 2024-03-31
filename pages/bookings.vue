@@ -1,7 +1,8 @@
 <script lang="ts" setup>
 import { XMarkIcon } from '@heroicons/vue/24/outline'
 
-import type { Travel, User } from '@/types'
+import { PaymentMethodValue } from '@/types'
+import type { Travel, User, PaymentMethod } from '@/types'
 
 const { emailValidation, phoneValidation, dateOfBirthValidation } = useValidations()
 
@@ -13,14 +14,18 @@ const openWizard = ref(false)
 const active = ref(0)
 const selectedTravel = ref('')
 
-const paymentMethods = [
+const paymentMethods: PaymentMethod[] = [
   {
     id: 1,
-    value: 'Paypal',
+    value: PaymentMethodValue.Paypal,
     logo: 'https://w7.pngwing.com/pngs/720/939/png-transparent-paypal-computer-icons-logo-paypal-blue-angle-service-thumbnail.png',
   },
-  { id: 2, value: 'Revolut', logo: 'https://asset.brandfetch.io/idfFwYU4-9/idtPX9K4r8.png' },
-  { id: 3, value: 'Bank Transfer', logo: 'https://www.freeiconspng.com/thumbs/bank-icon/bank-icon-5.png' },
+  { id: 2, value: PaymentMethodValue.Revolut, logo: 'https://asset.brandfetch.io/idfFwYU4-9/idtPX9K4r8.png' },
+  {
+    id: 3,
+    value: PaymentMethodValue.BankTransfer,
+    logo: 'https://www.freeiconspng.com/thumbs/bank-icon/bank-icon-5.png',
+  },
 ]
 
 const newUser: User = reactive({
@@ -28,9 +33,9 @@ const newUser: User = reactive({
   lastName: '',
   email: '',
   phoneNumber: '',
-  birthdate: undefined,
+  birthDate: '',
   gender: null,
-  paymentMethod: 'Paypal',
+  paymentMethod: PaymentMethodValue.Paypal,
   travelId: null,
   notes: '',
 })
@@ -55,9 +60,9 @@ const resetNewUserTemplate = async () => {
   newUser.lastName = ''
   newUser.email = ''
   newUser.phoneNumber = ''
-  newUser.birthdate = undefined
+  newUser.birthDate = ''
   newUser.gender = null
-  newUser.paymentMethod = 'Paypal'
+  newUser.paymentMethod = PaymentMethodValue.Paypal
   newUser.travelId = null
   newUser.notes = ''
 }
@@ -141,16 +146,15 @@ const handleCreate = async () => {
                         <template #content="{ nextCallback }">
                           <div class="flex flex-col">
                             <div
-                              class="lg:h-[23rem] flex items-start justify-center flex-auto font-medium border-2 border-dashed rounded-md border-surface-200 dark:border-surface-700 bg-surface-0 dark:bg-surface-900"
+                              class="lg:h-[23rem] lg:max-h-[23rem] flex items-start justify-center flex-auto font-medium border-2 border-dashed rounded-md border-surface-200 dark:border-surface-700 bg-surface-0 dark:bg-surface-900"
                             >
                               <div class="flex flex-col p-4">
-                                <div class="mb-3 text-xl font-semibold text-center">
-                                  Select the travel
-                                </div>
+                                <div class="mb-3 text-xl font-semibold text-center">Select the travel</div>
                                 <div class="grid grid-cols-2 gap-8">
                                   <Listbox
                                     :value="newUser.travelId"
                                     :options="travels"
+                                    :pt="{ list: { class: 'h-56' } }"
                                     filter
                                     option-label="name"
                                     class="col-span-2 md:col-span-1"
@@ -188,9 +192,7 @@ const handleCreate = async () => {
                               class="lg:h-[23rem] flex items-start justify-center flex-auto font-medium border-2 border-dashed rounded-md border-surface-200 dark:border-surface-700 bg-surface-0 dark:bg-surface-900"
                             >
                               <div class="flex flex-col p-4">
-                                <div class="mb-3 text-xl font-semibold text-center">
-                                  Fill the user information
-                                </div>
+                                <div class="mb-3 text-xl font-semibold text-center">Fill the user information</div>
                                 <div class="grid gap-x-6 gap-y-4 lg:gap-y-8 sm:grid-cols-6">
                                   <div class="sm:col-span-2">
                                     <label
@@ -230,11 +232,11 @@ const handleCreate = async () => {
                                     </label>
                                     <InputMask
                                       id="age"
-                                      v-model="newUser.birthdate"
+                                      v-model="newUser.birthDate"
                                       mask="99/99/9999"
                                       placeholder="dd/mm/yyyy"
                                       class="w-full"
-                                      @blur="isBirthdateValid = dateOfBirthValidation(newUser.birthdate)"
+                                      @blur="isBirthdateValid = dateOfBirthValidation(newUser.birthDate)"
                                     />
                                   </div>
                                   <div class="sm:col-span-2">
@@ -317,9 +319,7 @@ const handleCreate = async () => {
                               class="lg:h-[23rem] flex items-start justify-center flex-auto font-medium border-2 border-dashed rounded-md border-surface-200 dark:border-surface-700 bg-surface-0 dark:bg-surface-900"
                             >
                               <div class="flex flex-col p-4">
-                                <div class="mb-3 text-xl font-semibold text-center">
-                                  Select paymet method
-                                </div>
+                                <div class="mb-3 text-xl font-semibold text-center">Select paymet method</div>
                                 <div class="grid grid-cols-1 gap-8 md:grid-cols-2">
                                   <div class="flex flex-col">
                                     <label class="block text-sm font-medium leading-6 text-left text-gray-900">

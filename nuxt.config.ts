@@ -1,6 +1,9 @@
 import * as path from 'path'
 
 export default defineNuxtConfig({
+  app: {
+    pageTransition: { name: 'page', mode: 'out-in' },
+  },
   modules: ['@nuxtjs/tailwindcss', '@nuxt/image', 'nuxt-primevue', 'nuxt-headlessui'],
   primevue: {
     options: {

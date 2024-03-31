@@ -8,7 +8,7 @@ import type { Travel, Travels } from '@/types'
 const query = ref({})
 
 const { travels, pending, refresh } = useGetTravels(query)
-const stateTravels = useState('travels', 'default value')
+const stateTravels = useState<Travel[]>('travels', () => [])
 
 const open = ref(false)
 const filtersRef = ref<typeof TravelFilters | null>(null)
@@ -22,6 +22,7 @@ const tempData = reactive({
   price: 0,
   averageRating: 0,
 })
+
 const handleUpdate = (updatedData: Travel) => {
   Object.assign(tempData, updatedData)
 }
@@ -48,6 +49,7 @@ watch(travels, (newValue: Travels) => {
   stateTravels.value = newValue
   localStorage.setItem('travels', JSON.stringify(newValue))
 })
+
 onMounted(async () => {
   stateTravels.value = travels.value
   localStorage.setItem('travels', JSON.stringify(travels.value))
@@ -55,9 +57,7 @@ onMounted(async () => {
 </script>
 <template>
   <div>
-    <p class="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
-      Travels
-    </p>
+    <p class="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Travels</p>
     <TravelFilters
       ref="filtersRef"
       @query-filters="query = $event"
@@ -89,10 +89,8 @@ onMounted(async () => {
         </li>
       </template>
       <template v-else>
-        <div class="col-span-3 text-center">
-          <h1 class="mt-4 text-3xl font-bold tracking-tight text-gray-900 sm:text-5xl">
-            Travels Not Found
-          </h1>
+        <div class="col-span-3 mt-20 text-center">
+          <h1 class="mt-4 text-3xl font-bold tracking-tight text-gray-900 sm:text-5xl">Travels Not Found</h1>
           <p class="mt-6 text-base leading-7 text-gray-600">
             Oops, it seems there are no travels matching your search criteria.
           </p>

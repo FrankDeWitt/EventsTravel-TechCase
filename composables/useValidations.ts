@@ -13,7 +13,10 @@ export const useValidations = () => {
     return result
   }
 
-  const dateOfBirthValidation = (dateOfBirth: string) => {
+  const dateOfBirthValidation = (dateOfBirth: string | undefined) => {
+    if (typeof dateOfBirth === 'undefined') {
+      return false
+    }
     const dateRegex = new RegExp('^([0-2]?[0-9]|3[0-1])/(0?[1-9]|1[0-2])/(19[0-9]{2}|20[0-1][0-9]|202[0-2])$')
     if (!dateRegex.test(dateOfBirth)) {
       return false
@@ -39,6 +42,7 @@ export const useValidations = () => {
   }
 
   const calculateAge = (birthdate: string) => {
+    console.log('🚀 ~ birthdate:', birthdate)
     const formattedDate = birthdate.split('/').reverse().join('-')
     const formattedBirthDate = dayjs(formattedDate)
     const age = dayjs().diff(formattedBirthDate, 'year')
