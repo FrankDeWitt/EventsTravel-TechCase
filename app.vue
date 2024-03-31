@@ -14,6 +14,8 @@ onMounted(async () => {
       travels.value = []
     }
   }
+
+  document.documentElement.classList.remove('dark')
 })
 </script>
 
