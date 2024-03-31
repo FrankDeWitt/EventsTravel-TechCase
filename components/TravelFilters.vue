@@ -78,7 +78,7 @@ defineExpose({ reset })
           Min rate
         </label>
         <Rating
-          v-model="rating as number | undefined"
+          v-model="rating"
           input-id="rating"
           class="lg:mt-3"
         />
