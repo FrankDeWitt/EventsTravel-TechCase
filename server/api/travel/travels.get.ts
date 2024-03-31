@@ -1,5 +1,4 @@
-// import travels from '../data'
-import { getTravels } from '../services/travelService'
+import { getTravels } from '../../services/travelService'
 
 import type { Travels } from '@/types'
 

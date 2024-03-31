@@ -1,4 +1,4 @@
-import { editTravel } from '../services/travelService'
+import { editTravel } from '../../services/travelService'
 
 export default async function eventHandler(event): Promise<boolean> {
   const payload = await readBody(event)

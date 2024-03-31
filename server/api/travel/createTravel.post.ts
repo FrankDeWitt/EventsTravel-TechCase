@@ -1,11 +1,10 @@
-import { removeTravel } from '../services/travelService'
+import { createTravel } from '../../services/travelService'
 
 export default async function eventHandler(event): Promise<boolean> {
   const payload = await readBody(event)
-  const idToRemove = payload.id
 
   try {
-    await removeTravel(idToRemove)
+    await createTravel(payload)
   } catch (error) {
     console.error('Error:', error)
     return false

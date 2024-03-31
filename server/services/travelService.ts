@@ -1,4 +1,4 @@
-import staticTravels from '../data'
+import staticTravels from '../travelsData'
 import type { Travels, Travel } from '@/types'
 
 let travels: Travels = [...staticTravels]
