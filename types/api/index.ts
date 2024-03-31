@@ -18,15 +18,15 @@ export type Query = {
 }
 
 export interface User {
-  id: number
+  id?: number
   firstName: string
   lastName: string
   email: string
   phoneNumber: string
-  age: number
-  gender: 'Male' | 'Female'
-  paymentMethod: 'paypal' | 'revolut' | 'bank transfer'
-  travelId: number
+  birthdate: string | undefined
+  gender: 'Male' | 'Female' | null
+  paymentMethod: 'Paypal' | 'Revolut' | 'Bank transfer'
+  travelId: number | null
   notes?: string
 }
 

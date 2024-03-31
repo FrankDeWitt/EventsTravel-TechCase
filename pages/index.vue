@@ -55,10 +55,11 @@ onMounted(async () => {
 </script>
 <template>
   <div>
-    <p class="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Travels</p>
+    <p class="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+      Travels
+    </p>
     <TravelFilters
       ref="filtersRef"
-      :data="travels"
       @query-filters="query = $event"
     />
     <ul
@@ -89,7 +90,9 @@ onMounted(async () => {
       </template>
       <template v-else>
         <div class="col-span-3 text-center">
-          <h1 class="mt-4 text-3xl font-bold tracking-tight text-gray-900 sm:text-5xl">Travels Not Found</h1>
+          <h1 class="mt-4 text-3xl font-bold tracking-tight text-gray-900 sm:text-5xl">
+            Travels Not Found
+          </h1>
           <p class="mt-6 text-base leading-7 text-gray-600">
             Oops, it seems there are no travels matching your search criteria.
           </p>
@@ -158,7 +161,7 @@ onMounted(async () => {
                   <div class="text-center">
                     <HeadlessDialogTitle
                       as="h3"
-                      class="text-base font-semibold leading-6 text-gray-900"
+                      class="mb-6 text-base font-semibold leading-6 text-gray-900"
                     >
                       Create new travel
                     </HeadlessDialogTitle>

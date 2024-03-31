@@ -254,7 +254,8 @@ watch(
                   </HeadlessDialogTitle>
                   <div class="mt-2">
                     <p class="text-sm text-gray-500">
-                      Are you sure you want to delete this travel?
+                      Are you sure you want to delete this travel? Deleting this record could cause users on the Booking
+                      page to incorrectly display which product they purchased.
                     </p>
                   </div>
                 </div>
