@@ -72,3 +72,12 @@ For more information on working with `bun`, `Nuxt`, `ESLint`, or `Prettier`, ple
 - [Nuxt Documentation](https://nuxt.com/docs/getting-started/introduction)
 - [ESLint Getting Started with ESLint](https://eslint.org/docs/latest/use/getting-started)
 - [Prettier Documentation](https://prettier.io/docs/en/install)
+
+## Extra information
+
+For the database implementation, the Nuxt server is utilized to populate the initial data from a JSON file. This approach avoids direct manipulation of the JSON file, which could restrict its utility. Instead, the server creates a duplicate of the data in a persistent variable. This variable is designed to share the state across all devices connecting to the server, ensuring a synchronized view of the data for every user.
+
+To maintain the integrity and initial state of the data, the server does not modify the original JSON directly. Any changes to the data during runtime are made to the persistent variable copy. This design choice ensures that the original dataset remains unaltered and accessible in its initial form.
+
+Resetting Data State:
+The persistent variable's data is stored in memory and remains constant across sessions and devices until the server undergoes a restart. Restarting the server is the designated method for resetting the data stored in the persistent variable back to its original state, as defined by the initial JSON file. This process ensures that any runtime modifications to the data are cleared, and the system is restored to its baseline configuration.
