@@ -42,7 +42,6 @@ export const useValidations = () => {
   }
 
   const calculateAge = (birthdate: string) => {
-    console.log('🚀 ~ birthdate:', birthdate)
     const formattedDate = birthdate.split('/').reverse().join('-')
     const formattedBirthDate = dayjs(formattedDate)
     const age = dayjs().diff(formattedBirthDate, 'year')
