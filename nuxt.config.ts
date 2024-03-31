@@ -9,7 +9,7 @@ export default defineNuxtConfig({
     options: {
       unstyled: true,
     },
-    importPT: { from: path.resolve(__dirname, './presets/lara/') }, //import and apply preset
+    importPT: { from: path.resolve(__dirname, './presets/lara/') },
   },
   css: ['~/assets/css/base.css'],
   headlessui: {
