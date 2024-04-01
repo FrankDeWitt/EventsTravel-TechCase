@@ -23,7 +23,8 @@ const travelDataFilled = computed(() => {
     tempData.description !== '' &&
     tempData.departureDate !== '' &&
     tempData.returnDate !== '' &&
-    tempData.picture !== ''
+    tempData.picture !== '' &&
+    tempData.price !== null
   )
 })
 

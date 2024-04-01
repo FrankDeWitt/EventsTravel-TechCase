@@ -7,24 +7,35 @@ const props = defineProps<{
   data: Travel
 }>()
 
+const emit = defineEmits<{
+  (event: 'editTravel', payload: Travel): void
+  (event: 'deleteTravel', payload: number): void
+}>()
+
 const showingModal = ref(false)
 const showingConfirmationModal = ref(false)
 
-const tempData = reactive({
+const tempData: Travel = reactive({
   id: 0,
   name: '',
   description: '',
   departureDate: '',
   returnDate: '',
   picture: '',
-  price: 0,
+  price: null,
   averageRating: 0,
 })
 
-const emit = defineEmits<{
-  (event: 'editTravel', payload: Travel): void
-  (event: 'deleteTravel', payload: number): void
-}>()
+const travelDataFilled = computed(() => {
+  return (
+    tempData.name !== '' &&
+    tempData.description !== '' &&
+    tempData.departureDate !== '' &&
+    tempData.returnDate !== '' &&
+    tempData.picture !== '' &&
+    tempData.price !== null
+  )
+})
 
 const handleUpdate = (updatedData: Travel) => {
   Object.assign(tempData, updatedData)
@@ -152,6 +163,7 @@ watch(
       <Button
         type="button"
         class="inline-flex justify-center w-full px-3 py-2 text-sm font-semibold text-white rounded-md shadow-sm bg-primary-500 hover:bg-primary-600"
+        :disabled="!travelDataFilled"
         @click="emit('editTravel', tempData), (showingModal = false)"
       >
         Save

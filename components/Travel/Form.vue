@@ -1,5 +1,6 @@
 <script lang="ts" setup>
 import dayjs from 'dayjs'
+import customParseFormat from 'dayjs/plugin/customParseFormat'
 
 import type { Travel } from '@/types'
 
@@ -11,11 +12,28 @@ const emit = defineEmits<{
   (event: 'update:data', payload: Travel): void
 }>()
 
+dayjs.extend(customParseFormat)
+
 const localData = ref<Travel>({ ...props.data })
 
+const minReturnDate = computed(() => {
+  if (props.data.departureDate) {
+    return dayjs(props.data.departureDate, 'DD/MM/YYYY').toDate()
+  }
+  return dayjs().add(1, 'day').toDate()
+})
 const updateField = <K extends keyof Travel>(fieldName: K, value: Travel[K]) => {
   localData.value[fieldName] = value
   emit('update:data', localData.value)
+}
+
+const handleEndDateSelect = (date: Date) => {
+  const returnDate = dayjs(props.data.returnDate, 'DD/MM/YYYY').toDate()
+  if (dayjs(date).isAfter(dayjs(returnDate))) {
+    updateField('returnDate', '')
+  } else {
+    updateField('departureDate', dayjs(date).format('DD/MM/YYYY'))
+  }
 }
 
 watchEffect(() => {
@@ -67,7 +85,9 @@ watchEffect(() => {
             date-format="dd/mm/yy"
             class="w-full"
             :model-value="localData.departureDate"
-            @update:model-value="updateField('departureDate', dayjs($event).format('DD/MM/YYYY'))"
+            @update:model-value="
+              updateField('departureDate', dayjs($event).format('DD/MM/YYYY')), handleEndDateSelect($event)
+            "
           />
         </div>
         <div class="text-left sm:col-span-3">
@@ -81,6 +101,7 @@ watchEffect(() => {
             id="return"
             date-format="dd/mm/yy"
             class="w-full"
+            :min-date="minReturnDate"
             :model-value="localData.returnDate"
             @update:model-value="updateField('returnDate', dayjs($event).format('DD/MM/YYYY'))"
           />
