@@ -86,7 +86,7 @@ defineExpose({ reset })
       <div class="flex items-center w-full mt-2 lg:w-auto lg:ml-auto">
         <Button
           type="button"
-          class="inline-flex justify-center w-full px-3 py-2 text-sm font-semibold text-black bg-white rounded-md shadow-sm border-surface-200 hover:bg-surface-50 hover:border-surface-200 sm:ml-3"
+          class="inline-flex justify-center w-full px-3 py-2 text-sm font-semibold !text-black bg-white rounded-md shadow-sm border-surface-200 hover:bg-surface-50 hover:border-surface-200"
           @click="reset()"
         >
           Reset Filters
