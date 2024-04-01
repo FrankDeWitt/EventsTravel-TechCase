@@ -195,8 +195,8 @@ const handleCreate = async () => {
                             @blur="isBirthdateValid = dateOfBirthValidation(newUser.birthDate)"
                           />
                           <small
-                            v-if="!isBirthdateValid"
-                            id="email-help"
+                            v-if="isBirthdateValid === false"
+                            id="age-help"
                             class="text-red-500"
                           >
                             Invalid birthdate format
@@ -220,7 +220,7 @@ const handleCreate = async () => {
                             @blur="isEmailValid = emailValidation(newUser.email)"
                           />
                           <small
-                            v-if="!isEmailValid"
+                            v-if="isEmailValid === false"
                             id="email-help"
                             class="text-red-500"
                           >
