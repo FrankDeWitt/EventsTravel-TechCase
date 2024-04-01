@@ -9,7 +9,34 @@ export default defineNuxtConfig({
     options: {
       unstyled: true,
     },
-    importPT: { from: path.resolve(__dirname, './presets/lara/') },
+    importPT: { from: path.resolve(__dirname, './presets/custom/') },
+    components: {
+      include: [
+        'Button',
+        'Calendar',
+        'Column',
+        'ColumnGroup',
+        'DataTable',
+        'Dropdown',
+        'InputMask',
+        'InputNumber',
+        'InputText',
+        'Listbox',
+        'Rating',
+        'Row',
+        'Skeleton',
+        'Slider',
+        'Stepper',
+        'StepperPanel',
+        'Textarea',
+      ],
+    },
+    composables: {
+      exclude: '*',
+    },
+    directives: {
+      exclude: '*',
+    },
   },
   css: ['~/assets/css/base.css'],
   headlessui: {

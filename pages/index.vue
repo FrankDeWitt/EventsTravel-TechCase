@@ -5,6 +5,10 @@ import { PlusIcon } from '@heroicons/vue/24/outline'
 
 import type { Travel, Travels } from '@/types'
 
+useHead({
+  title: 'Manage Travels',
+})
+
 const query = ref({})
 const showingModal = ref(false)
 

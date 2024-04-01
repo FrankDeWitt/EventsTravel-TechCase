@@ -3,6 +3,10 @@ import { PaymentMethodValue } from '@/types'
 import type { Travel, User, PaymentMethod } from '@/types'
 import { GenderValue } from '@/types'
 
+useHead({
+  title: 'Manage Bookings',
+})
+
 const { emailValidation, phoneValidation, dateOfBirthValidation } = useValidations()
 
 const { users, pending, refresh } = useGetUsers()
