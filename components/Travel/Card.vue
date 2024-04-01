@@ -101,13 +101,9 @@ watch(
       </div>
     </div>
     <div class="flex flex-wrap items-center text-xs leading-5 text-gray-500 gap-x-2">
-      <p class="whitespace-nowrap">
-        Departure {{ data.departureDate }}
-      </p>
+      <p class="whitespace-nowrap">Departure {{ data.departureDate }}</p>
       -
-      <p class="whitespace-nowrap">
-        Return {{ data.returnDate }}
-      </p>
+      <p class="whitespace-nowrap">Return {{ data.returnDate }}</p>
     </div>
     <p class="mt-2 text-base leading-7 text-gray-600">
       {{ data.description }}
@@ -122,13 +118,9 @@ watch(
             aria-hidden="true"
           />
         </div>
-        <p class="hidden md:block lg:hidden xl:block">
-          {{ data.averageRating }} out of 5 stars
-        </p>
+        <p class="hidden md:block lg:hidden xl:block">{{ data.averageRating }} out of 5 stars</p>
       </div>
-      <p class="font-bold text-wr-red">
-        {{ data.price }}€
-      </p>
+      <p class="font-bold text-wr-red">{{ data.price }}€</p>
     </div>
   </div>
   <GlobalModal
@@ -151,20 +143,20 @@ watch(
       </div>
     </div>
     <div class="flex gap-3 mt-5 sm:mt-6">
-      <button
+      <Button
         type="button"
-        class="inline-flex justify-center w-full px-3 py-2 text-sm font-semibold text-gray-900 bg-white rounded-md shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:mt-0"
+        class="inline-flex justify-center w-full px-3 py-2 text-sm font-semibold text-white rounded-md shadow-sm border-surface-500 bg-surface-500 hover:bg-surface-600 hover:border-surface-500"
         @click="showingModal = false"
       >
         Cancel
-      </button>
-      <button
+      </Button>
+      <Button
         type="button"
-        class="inline-flex justify-center w-full px-3 py-2 text-sm font-semibold text-white rounded-md shadow-sm bg-primary-500 hover:bg-primary-600 sm:ml-3"
+        class="inline-flex justify-center w-full px-3 py-2 text-sm font-semibold text-white rounded-md shadow-sm bg-primary-500 hover:bg-primary-600"
         @click="emit('editTravel', tempData), (showingModal = false)"
       >
         Save
-      </button>
+      </Button>
     </div>
   </GlobalModal>
   <GlobalModal
@@ -190,27 +182,27 @@ watch(
         </HeadlessDialogTitle>
         <div class="mt-2">
           <p class="text-sm text-gray-500">
-            Are you sure you want to delete this travel? <br>Deleting this record could cause users on the Booking
+            Are you sure you want to delete this travel? <br />Deleting this record could cause users on the Booking
             page to incorrectly display which product they purchased.
           </p>
         </div>
       </div>
     </div>
-    <div class="mt-5 sm:mt-4 sm:flex sm:flex-row-reverse">
-      <button
+    <div class="flex gap-3 mt-5 sm:mt-6">
+      <Button
         type="button"
-        class="inline-flex justify-center w-full px-3 py-2 text-sm font-semibold text-white rounded-md shadow-sm bg-primary-500 hover:bg-primary-600 sm:ml-3 sm:w-auto"
-        @click="emit('deleteTravel', data.id as number), (showingConfirmationModal = false)"
-      >
-        Delete Travel
-      </button>
-      <button
-        type="button"
-        class="inline-flex justify-center w-full px-3 py-2 mt-3 text-sm font-semibold text-gray-900 bg-white rounded-md shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:mt-0 sm:w-auto"
+        class="inline-flex justify-center w-full px-3 py-2 text-sm font-semibold text-white rounded-md shadow-sm border-surface-500 bg-surface-500 hover:bg-surface-600 hover:border-surface-500"
         @click="showingConfirmationModal = false"
       >
         Cancel
-      </button>
+      </Button>
+      <Button
+        type="button"
+        class="inline-flex justify-center w-full px-3 py-2 text-sm font-semibold text-white rounded-md shadow-sm bg-primary-500 hover:bg-primary-600"
+        @click="emit('deleteTravel', data.id as number), (showingConfirmationModal = false)"
+      >
+        Delete Travel
+      </Button>
     </div>
   </GlobalModal>
 </template>

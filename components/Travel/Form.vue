@@ -124,6 +124,10 @@ watchEffect(() => {
             id="price"
             class="w-full"
             :model-value="localData.price"
+            input-id="currency-germany"
+            mode="currency"
+            currency="EUR"
+            locale="de-DE"
             @update:model-value="updateField('price', $event)"
           />
         </div>

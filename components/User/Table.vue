@@ -53,21 +53,17 @@ const getTravelNameById = (travelId: number) => {
             placeholder="Keyword Search"
           />
         </IconField>
-        <button
+        <Button
           type="button"
-          class="justify-center px-3 py-2 text-sm font-semibold text-white rounded-md shadow-sm bg-primary-500 hover:bg-primary-600"
+          class="inline-flex justify-center px-3 py-2 text-sm font-semibold text-white rounded-md shadow-sm bg-primary-500 hover:bg-primary-600 sm:ml-3"
           @click="emit('createUser', true)"
         >
           Add new user
-        </button>
+        </Button>
       </div>
     </template>
-    <template #empty>
-      No customers found.
-    </template>
-    <template #loading>
-      Loading customers data. Please wait.
-    </template>
+    <template #empty> No customers found. </template>
+    <template #loading> Loading customers data. Please wait. </template>
     <Column
       field="firstName"
       header="Name"
