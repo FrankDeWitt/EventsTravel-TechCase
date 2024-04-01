@@ -2,11 +2,11 @@
 
 <template>
   <div class="body-wrapper">
-    <GlobalHeader />
+    <BaseHeader />
     <div class="p-6 sm:mx-auto sm:container my-px-6 lg:p-8">
       <slot />
     </div>
-    <GlobalFooter />
+    <BaseFooter />
   </div>
 </template>
 

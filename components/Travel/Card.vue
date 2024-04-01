@@ -101,13 +101,9 @@ watch(
       </div>
     </div>
     <div class="flex flex-wrap items-center text-xs leading-5 text-gray-500 gap-x-2">
-      <p class="whitespace-nowrap">
-        Departure {{ data.departureDate }}
-      </p>
+      <p class="whitespace-nowrap">Departure {{ data.departureDate }}</p>
       -
-      <p class="whitespace-nowrap">
-        Return {{ data.returnDate }}
-      </p>
+      <p class="whitespace-nowrap">Return {{ data.returnDate }}</p>
     </div>
     <p class="mt-2 text-base leading-7 text-gray-600">
       {{ data.description }}
@@ -122,16 +118,12 @@ watch(
             aria-hidden="true"
           />
         </div>
-        <p class="hidden md:block lg:hidden xl:block">
-          {{ data.averageRating }} out of 5 stars
-        </p>
+        <p class="hidden md:block lg:hidden xl:block">{{ data.averageRating }} out of 5 stars</p>
       </div>
-      <p class="font-bold text-wr-red">
-        {{ data.price }}€
-      </p>
+      <p class="font-bold text-wr-red">{{ data.price }}€</p>
     </div>
   </div>
-  <GlobalModal
+  <BaseModal
     :showing="showingModal"
     size="md"
     @close="showingModal = false"
@@ -166,8 +158,8 @@ watch(
         Save
       </Button>
     </div>
-  </GlobalModal>
-  <GlobalModal
+  </BaseModal>
+  <BaseModal
     :showing="showingConfirmationModal"
     size="sm"
     @close="showingConfirmationModal = false"
@@ -190,7 +182,7 @@ watch(
         </HeadlessDialogTitle>
         <div class="mt-2">
           <p class="text-sm text-gray-500">
-            Are you sure you want to delete this travel? <br>Deleting this record could cause users on the Booking
+            Are you sure you want to delete this travel? <br />Deleting this record could cause users on the Booking
             page to incorrectly display which product they purchased.
           </p>
         </div>
@@ -212,5 +204,5 @@ watch(
         Delete Travel
       </Button>
     </div>
-  </GlobalModal>
+  </BaseModal>
 </template>

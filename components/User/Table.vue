@@ -44,15 +44,10 @@ const getTravelNameById = (travelId: number) => {
   >
     <template #header>
       <div class="flex flex-col justify-between gap-2 md:flex-row">
-        <IconField icon-position="left">
-          <InputIcon>
-            <i class="pi pi-search" />
-          </InputIcon>
-          <InputText
-            v-model="filters['global'].value"
-            placeholder="Keyword Search"
-          />
-        </IconField>
+        <InputText
+          v-model="filters['global'].value"
+          placeholder="Keyword Search"
+        />
         <Button
           type="button"
           class="inline-flex justify-center px-3 py-2 text-sm font-semibold text-white rounded-md shadow-sm bg-primary-500 hover:bg-primary-600 sm:ml-3"
@@ -62,12 +57,8 @@ const getTravelNameById = (travelId: number) => {
         </Button>
       </div>
     </template>
-    <template #empty>
-      No customers found.
-    </template>
-    <template #loading>
-      Loading customers data. Please wait.
-    </template>
+    <template #empty> No customers found. </template>
+    <template #loading> Loading customers data. Please wait. </template>
     <Column
       field="firstName"
       header="Name"

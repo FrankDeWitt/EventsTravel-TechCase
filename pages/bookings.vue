@@ -88,7 +88,7 @@ const handleCreate = async () => {
       :loading="pending"
       @create-user="showingModal = true"
     />
-    <GlobalModal
+    <BaseModal
       :showing="showingModal"
       size="lg"
       @close="(showingModal = false), resetNewUserTemplate()"
@@ -359,6 +359,6 @@ const handleCreate = async () => {
           </Stepper>
         </div>
       </div>
-    </GlobalModal>
+    </BaseModal>
   </div>
 </template>

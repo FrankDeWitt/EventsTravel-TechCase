@@ -21,7 +21,7 @@ const asideMenuOpen = ref(false)
           class="-m-1.5 p-1.5"
         >
           <span class="sr-only">WeRoad</span>
-          <GlobalLogo />
+          <BaseLogo />
         </NuxtLink>
       </div>
       <div class="flex">

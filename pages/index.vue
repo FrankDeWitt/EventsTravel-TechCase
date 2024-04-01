@@ -148,7 +148,7 @@ onMounted(async () => {
         aria-hidden="true"
       />
     </Button>
-    <GlobalModal
+    <BaseModal
       :showing="showingModal"
       size="md"
       @close="(showingModal = false), resetNewTravelTemplate()"
@@ -184,6 +184,6 @@ onMounted(async () => {
           Save
         </Button>
       </div>
-    </GlobalModal>
+    </BaseModal>
   </div>
 </template>

@@ -9,7 +9,7 @@ export default [
     description:
       'A 7-day journey exploring the natural beauty of the Rocky Mountains, with activities including hiking, camping, and wildlife observation.',
     price: 950,
-    averageRating: 3.3,
+    averageRating: 1.3,
   },
   {
     id: 2,
