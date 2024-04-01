@@ -51,6 +51,7 @@ watchEffect(() => {
             id="description"
             :value="localData.description"
             class="w-full h-24 lg:h-32"
+            maxlength="230"
             @update:model-value="updateField('description', $event)"
           />
         </div>
