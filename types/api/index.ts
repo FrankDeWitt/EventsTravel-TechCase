@@ -15,7 +15,7 @@ export interface Travel {
   returnDate: string
   picture: string
   description: string
-  price: number
+  price: number | null
   averageRating: number
 }
 

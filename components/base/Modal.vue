@@ -27,7 +27,7 @@ const sizeClass = computed(() => sizeToClassMap[props.size] || '')
     >
       <HeadlessDialog
         as="div"
-        class="relative z-10"
+        class="relative z-50"
         @close="emit('close')"
       >
         <HeadlessTransitionChild
@@ -60,7 +60,7 @@ const sizeClass = computed(() => sizeToClassMap[props.size] || '')
                 ]"
                 class="relative px-4 pt-5 pb-4 overflow-hidden text-left transition-all transform bg-white rounded-lg shadow-xl sm:my-8 sm:w-full sm:max-w-lg sm:p-6"
               >
-                <div class="absolute top-0 right-0 hidden pt-4 pr-4 sm:block">
+                <div class="absolute top-0 right-0 block pt-4 pr-4">
                   <button
                     type="button"
                     class="text-gray-400 bg-white rounded-md hover:text-gray-500"
