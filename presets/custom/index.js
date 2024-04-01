@@ -12,6 +12,7 @@ import calendar from './calendar';
 import skeleton from './skeleton';
 import datatable from './datatable';
 import dropdown from './dropdown';
+import paginator from './paginator';
 
 export default {
     global,
@@ -27,5 +28,6 @@ export default {
     calendar,
     skeleton,
     datatable,
-    dropdown
+    dropdown,
+    paginator
 }

@@ -3,7 +3,7 @@
 <template>
   <div class="body-wrapper">
     <BaseHeader />
-    <div class="p-6 sm:mx-auto sm:container my-px-6 lg:p-8">
+    <div class="p-6 mt-24 sm:mx-auto sm:container my-px-6 lg:p-8">
       <slot />
     </div>
     <BaseFooter />
