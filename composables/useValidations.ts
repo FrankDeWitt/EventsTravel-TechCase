@@ -8,7 +8,7 @@ export const useValidations = () => {
 
   const phoneValidation = (phone: string) => {
     let result = true
-    const strongRegex = new RegExp('^3[0-9]{2}-[0-9]{6}$')
+    const strongRegex = new RegExp('^[0-9]{3}-[0-9]{6}$')
     result = strongRegex.test(phone)
     return result
   }

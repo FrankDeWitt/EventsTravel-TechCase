@@ -109,9 +109,7 @@ const handleCreate = async () => {
                     class="lg:h-[23rem] lg:max-h-[23rem] flex items-start justify-center flex-auto border-2 border-dashed rounded-md"
                   >
                     <div class="flex flex-col p-4">
-                      <div class="mb-3 text-xl font-semibold text-center">
-                        Select the travel
-                      </div>
+                      <div class="mb-3 text-xl font-semibold text-center">Select the travel</div>
                       <div class="grid grid-cols-2 gap-8">
                         <Listbox
                           v-model="newUser.travelId"
@@ -150,9 +148,7 @@ const handleCreate = async () => {
                     class="lg:h-[23rem] flex items-start justify-center flex-auto border-2 border-dashed rounded-md w-full"
                   >
                     <div class="flex flex-col w-full p-4">
-                      <div class="mb-3 text-xl font-semibold text-center">
-                        Fill the user information
-                      </div>
+                      <div class="mb-3 text-xl font-semibold text-center">Fill the user information</div>
                       <div class="grid gap-x-6 gap-y-4 lg:gap-y-8 sm:grid-cols-6">
                         <div class="sm:col-span-2">
                           <label
@@ -180,7 +176,7 @@ const handleCreate = async () => {
                             class="w-full"
                           />
                         </div>
-                        <div class="sm:col-span-2">
+                        <div class="text-left sm:col-span-2">
                           <label
                             for="age"
                             :class="[
@@ -188,7 +184,7 @@ const handleCreate = async () => {
                               'block text-sm font-medium leading-6 text-left',
                             ]"
                           >
-                            Age
+                            Birthdate
                           </label>
                           <InputMask
                             id="age"
@@ -198,8 +194,15 @@ const handleCreate = async () => {
                             class="w-full"
                             @blur="isBirthdateValid = dateOfBirthValidation(newUser.birthDate)"
                           />
+                          <small
+                            v-if="!isBirthdateValid"
+                            id="email-help"
+                            class="text-red-500"
+                          >
+                            Invalid birthdate format
+                          </small>
                         </div>
-                        <div class="sm:col-span-2">
+                        <div class="text-left sm:col-span-2">
                           <label
                             for="email"
                             :class="[
@@ -216,6 +219,13 @@ const handleCreate = async () => {
                             placeholder="your@email.here"
                             @blur="isEmailValid = emailValidation(newUser.email)"
                           />
+                          <small
+                            v-if="!isEmailValid"
+                            id="email-help"
+                            class="text-red-500"
+                          >
+                            Invalid email format
+                          </small>
                         </div>
                         <div class="sm:col-span-2">
                           <label
@@ -231,7 +241,7 @@ const handleCreate = async () => {
                             id="phoneNumber"
                             v-model="newUser.phoneNumber"
                             mask="999-999999"
-                            placeholder="3xx-xxxxxx"
+                            placeholder="xxx-xxxxxx"
                             class="w-full"
                             @blur="isPhoneValid = phoneValidation(newUser.phoneNumber)"
                           />
@@ -274,9 +284,7 @@ const handleCreate = async () => {
                 <div class="flex flex-col">
                   <div class="lg:h-[23rem] flex items-start justify-center flex-auto border-2 border-dashed rounded-md">
                     <div class="flex flex-col w-full p-4">
-                      <div class="mb-3 text-xl font-semibold text-center">
-                        Select paymet method
-                      </div>
+                      <div class="mb-3 text-xl font-semibold text-center">Select paymet method</div>
                       <div class="grid grid-cols-1 gap-8 md:grid-cols-2">
                         <div class="flex flex-col">
                           <label class="block text-sm font-medium leading-6 text-left text-gray-900">
