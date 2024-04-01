@@ -106,7 +106,7 @@ const handleCreate = async () => {
             linear
             :pt="{ panelContainer: { class: 'p-0 lg:p-4' } }"
           >
-            <StepperPanel>
+            <StepperPanel :pt="{ action: { class: 'cursor-auto' } }">
               <template #content="{ nextCallback }">
                 <div class="flex flex-col">
                   <div
@@ -145,7 +145,7 @@ const handleCreate = async () => {
                 </div>
               </template>
             </StepperPanel>
-            <StepperPanel>
+            <StepperPanel :pt="{ action: { class: 'cursor-auto' } }">
               <template #content="{ prevCallback, nextCallback }">
                 <div class="flex flex-col">
                   <div
@@ -283,7 +283,7 @@ const handleCreate = async () => {
                 </div>
               </template>
             </StepperPanel>
-            <StepperPanel>
+            <StepperPanel :pt="{ action: { class: 'cursor-auto' } }">
               <template #content="{ prevCallback }">
                 <div class="flex flex-col">
                   <div class="lg:h-[23rem] flex items-start justify-center flex-auto border-2 border-dashed rounded-md">

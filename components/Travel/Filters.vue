@@ -67,6 +67,7 @@ defineExpose({ reset })
           v-model="priceRange"
           :min="0"
           :max="5000"
+          :pt="{ range: { class: 'z-[-1]' } }"
           class="w-auto mt-4"
         />
       </div>

@@ -85,7 +85,7 @@ watchEffect(() => {
             @update:model-value="updateField('returnDate', dayjs($event).format('DD/MM/YYYY'))"
           />
         </div>
-        <div class="text-left sm:col-span-6">
+        <div class="text-left sm:col-span-3">
           <label
             for="picture"
             class="block text-sm font-medium leading-6 text-left text-gray-900"
@@ -96,22 +96,8 @@ watchEffect(() => {
             id="picture"
             :value="localData.picture"
             class="w-full"
+            placeholder="https://image-url-to-show.com"
             @update:model-value="updateField('picture', $event)"
-          />
-        </div>
-        <div class="sm:col-span-3">
-          <label
-            for="rating"
-            class="block text-sm font-medium leading-6 text-left text-gray-900"
-          >
-            Rating
-          </label>
-          <Rating
-            id="rating"
-            :model-value="localData.averageRating"
-            :cancel="false"
-            class="mt-3"
-            @update:model-value="updateField('averageRating', $event)"
           />
         </div>
         <div class="text-left sm:col-span-3">
@@ -129,6 +115,7 @@ watchEffect(() => {
             mode="currency"
             currency="EUR"
             locale="de-DE"
+            placeholder="1.000 €"
             @update:model-value="updateField('price', $event)"
           />
         </div>

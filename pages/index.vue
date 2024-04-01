@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import Filters from '@/components/Travel/Filters.vue'
+import Filters from '@/components/travel/Filters.vue'
 
 import { PlusIcon } from '@heroicons/vue/24/outline'
 
@@ -15,7 +15,6 @@ const showingModal = ref(false)
 const { travels, pending, refresh } = useGetTravels(query)
 const stateTravels = useState<Travel[]>('travels', () => [])
 
-const open = ref(false)
 const filtersRef = ref<typeof Filters | null>(null)
 
 const travelDataFilled = computed(() => {
@@ -28,13 +27,13 @@ const travelDataFilled = computed(() => {
   )
 })
 
-const tempData = reactive({
+const tempData: Travel = reactive({
   name: '',
   description: '',
   departureDate: '',
   returnDate: '',
   picture: '',
-  price: 0,
+  price: null,
   averageRating: 0,
 })
 
@@ -44,7 +43,7 @@ const resetNewTravelTemplate = () => {
   tempData.departureDate = ''
   tempData.returnDate = ''
   tempData.picture = ''
-  tempData.price = 0
+  tempData.price = null
   tempData.averageRating = 0
 }
 

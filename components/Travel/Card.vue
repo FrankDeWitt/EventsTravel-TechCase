@@ -33,14 +33,7 @@ const handleUpdate = (updatedData: Travel) => {
 watch(
   () => props.data,
   (newVal) => {
-    tempData.id = newVal.id as number
-    tempData.name = newVal.name
-    tempData.description = newVal.description
-    tempData.departureDate = newVal.departureDate
-    tempData.returnDate = newVal.returnDate
-    tempData.picture = newVal.picture
-    tempData.price = newVal.price
-    tempData.averageRating = newVal.averageRating
+    Object.assign(tempData, newVal)
   },
   { deep: true, immediate: true }
 )
@@ -109,7 +102,10 @@ watch(
       {{ data.description }}
     </p>
     <div class="flex flex-wrap items-end justify-between flex-grow mt-2">
-      <div class="flex space-x-2">
+      <div
+        v-if="data.averageRating > 0"
+        class="flex space-x-2"
+      >
         <div class="flex items-center">
           <StarIcon
             v-for="rating in [0, 1, 2, 3, 4]"
@@ -119,6 +115,9 @@ watch(
           />
         </div>
         <p class="hidden md:block lg:hidden xl:block">{{ data.averageRating }} out of 5 stars</p>
+      </div>
+      <div v-else>
+        <p>No reviews yet</p>
       </div>
       <p class="font-bold text-wr-red">{{ data.price }}€</p>
     </div>
