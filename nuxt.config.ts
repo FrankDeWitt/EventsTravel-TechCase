@@ -4,7 +4,7 @@ export default defineNuxtConfig({
   app: {
     pageTransition: { name: 'page', mode: 'out-in' },
   },
-  modules: ['@nuxtjs/tailwindcss', '@nuxt/image', 'nuxt-primevue', 'nuxt-headlessui'],
+  modules: ['@nuxtjs/tailwindcss', '@nuxt/image', '@nuxtjs/device', 'nuxt-primevue', 'nuxt-headlessui'],
   primevue: {
     options: {
       unstyled: true,
@@ -29,6 +29,7 @@ export default defineNuxtConfig({
         'Stepper',
         'StepperPanel',
         'Textarea',
+        'Panel',
       ],
     },
     composables: {

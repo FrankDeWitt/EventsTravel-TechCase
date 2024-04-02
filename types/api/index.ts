@@ -23,8 +23,10 @@ export type Travels = Travel[]
 
 export type Query = {
   q: string
-  price: number | undefined
+  priceMin: number
+  priceMax: number
   rating: number | null
+  departureDate: string | undefined
 }
 
 export interface User {

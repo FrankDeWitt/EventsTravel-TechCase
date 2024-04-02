@@ -11,9 +11,10 @@ export default eventHandler(async (event) => {
   dayjs.extend(isSameOrAfter)
 
   const travels: Travels = getTravels()
-  const { q, price, rating, departureDate } = getQuery(event) as {
+  const { q, priceMin, priceMax, rating, departureDate } = getQuery(event) as {
     q?: string
-    price?: number
+    priceMin?: number
+    priceMax?: number
     rating?: number
     departureDate?: Date
   }
@@ -29,9 +30,13 @@ export default eventHandler(async (event) => {
       return travel.name.search(new RegExp(q, 'i')) !== -1 || travel.name.search(new RegExp(q, 'i')) !== -1
     })
     .filter((travel) => {
-      if (price === undefined || price === 0) return true
+      if (priceMin === undefined || priceMax === undefined) {
+        return true
+      }
 
-      return travel.price <= price
+      if (travel.price !== null && travel.price !== undefined && priceMin !== undefined && priceMax !== undefined) {
+        return travel.price >= priceMin && travel.price <= priceMax
+      }
     })
     .filter((travel) => {
       if (!rating) return true

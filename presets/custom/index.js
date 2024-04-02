@@ -13,6 +13,7 @@ import skeleton from './skeleton';
 import datatable from './datatable';
 import dropdown from './dropdown';
 import paginator from './paginator';
+import panel from './panel';
 
 export default {
     global,
@@ -29,5 +30,6 @@ export default {
     skeleton,
     datatable,
     dropdown,
-    paginator
+    paginator,
+    panel
 }

@@ -8,6 +8,7 @@ import type { Travel, Travels } from '@/types'
 useHead({
   title: 'Manage Travels',
 })
+const { isMobile } = useDevice()
 
 const query = ref({})
 const showingModal = ref(false)
@@ -84,10 +85,24 @@ onMounted(async () => {
 <template>
   <div>
     <p class="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Travels</p>
-    <TravelFilters
-      ref="filtersRef"
-      @query-filters="query = $event"
-    />
+    <div class="my-6">
+      <Panel
+        v-if="isMobile"
+        header="Filters"
+        toggleable
+      >
+        <TravelFilters
+          ref="filtersRef"
+          @query-filters="query = $event"
+        />
+      </Panel>
+
+      <TravelFilters
+        v-show="!isMobile"
+        ref="filtersRef"
+        @query-filters="query = $event"
+      />
+    </div>
     <ul
       class="grid justify-center grid-cols-1 md:grid-cols-2 lg:grid-cols-3 grid-auto-columns-1/2 lg:grid-auto-columns-1/3 gap-x-3 auto-rows-fr gap-y-5"
       role="list"
