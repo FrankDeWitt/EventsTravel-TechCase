@@ -1,14 +1,14 @@
-// import dayjs from 'dayjs'
-// import customParseFormat from 'dayjs/plugin/customParseFormat'
-// import isSameOrAfter from 'dayjs/plugin/isSameOrAfter'
+import dayjs from 'dayjs'
+import customParseFormat from 'dayjs/plugin/customParseFormat'
+import isSameOrAfter from 'dayjs/plugin/isSameOrAfter'
 
 import { getTravels } from '../../services/travelService'
 
 import type { Travels } from '@/types'
 
 export default eventHandler(async (event) => {
-  // dayjs.extend(customParseFormat)
-  // dayjs.extend(isSameOrAfter)
+  dayjs.extend(customParseFormat)
+  dayjs.extend(isSameOrAfter)
 
   const travels: Travels = getTravels()
   const { q, price, rating, departureDate } = getQuery(event) as {
