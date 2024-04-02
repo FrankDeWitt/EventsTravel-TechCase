@@ -130,13 +130,13 @@ watchEffect(() => {
           </label>
           <InputNumber
             id="price"
-            class="w-full"
             :model-value="localData.price"
             input-id="currency-germany"
             mode="currency"
             currency="EUR"
             locale="de-DE"
             placeholder="1.000 €"
+            class="w-full"
             @update:model-value="updateField('price', $event)"
           />
         </div>

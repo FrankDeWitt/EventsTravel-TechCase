@@ -1,4 +1,6 @@
 <script lang="ts" setup>
+import dayjs from 'dayjs'
+
 import type { Query } from '@/types'
 
 const emit = defineEmits<{
@@ -8,17 +10,20 @@ const emit = defineEmits<{
 const searchQuery = ref('')
 const priceRange = ref<number | undefined>(2500)
 const rating = ref<number | null>(null)
+const departureDate = ref<string>()
 
 const query: ComputedRef<Query> = computed(() => ({
   q: searchQuery.value,
   price: priceRange.value,
   rating: rating.value,
+  departureDate: departureDate.value,
 }))
 
 const reset = () => {
   searchQuery.value = ''
   priceRange.value = 2500
   rating.value = null
+  departureDate.value = ''
 }
 
 watch(query, (newValue: Query) => {
@@ -60,7 +65,7 @@ defineExpose({ reset })
           mode="currency"
           currency="EUR"
           locale="de-DE"
-          disabled
+          placeholder="2.500 €"
           class="w-full"
         />
         <Slider
@@ -69,6 +74,21 @@ defineExpose({ reset })
           :max="5000"
           :pt="{ range: { class: 'z-[-1]' } }"
           class="w-auto mt-4"
+        />
+      </div>
+      <div class="flex items-center gap-6 mt-2 lg:gap-0 lg:flex-col lg:items-start">
+        <label
+          for="departure"
+          class="block mb-2 font-bold"
+        >
+          Future Departure Dates
+        </label>
+        <Calendar
+          id="departure"
+          date-format="dd/mm/yy"
+          class="w-full"
+          :model-value="departureDate"
+          @update:model-value="departureDate = dayjs($event).format('DD/MM/YYYY')"
         />
       </div>
       <div class="flex items-center gap-6 mt-2 lg:gap-0 lg:flex-col lg:items-start">
