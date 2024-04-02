@@ -1,5 +1,4 @@
 import dayjs from 'dayjs'
-import customParseFormat from 'dayjs/plugin/customParseFormat'
 import isSameOrAfter from 'dayjs/plugin/isSameOrAfter'
 
 import { getTravels } from '../../services/travelService'
@@ -7,9 +6,6 @@ import { getTravels } from '../../services/travelService'
 import type { Travels } from '@/types'
 
 export default eventHandler(async (event) => {
-  dayjs.extend(customParseFormat)
-  dayjs.extend(isSameOrAfter)
-
   const travels: Travels = getTravels()
   const { q, price, rating, departureDate } = getQuery(event) as {
     q?: string
@@ -38,11 +34,12 @@ export default eventHandler(async (event) => {
 
       return Math.floor(travel.averageRating) >= Math.floor(rating)
     })
-  // .filter((travel) => {
-  //   if (!departureDate) return true
+    .filter((travel) => {
+      dayjs.extend(isSameOrAfter)
+      if (!departureDate) return true
 
-  //   const parsedDate = dayjs(travel.departureDate, 'DD/MM/YYYY').toDate()
-  //   const parsedDepartureDate = dayjs(departureDate, 'DD/MM/YYYY').toDate()
-  //   return dayjs(parsedDate).isSameOrAfter(dayjs(parsedDepartureDate))
-  // })
+      const parsedDate = dayjs(travel.departureDate, 'DD/MM/YYYY').toDate()
+      const parsedDepartureDate = dayjs(departureDate, 'DD/MM/YYYY').toDate()
+      return dayjs(parsedDate).isSameOrAfter(dayjs(parsedDepartureDate))
+    })
 })
