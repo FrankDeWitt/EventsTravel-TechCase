@@ -113,7 +113,9 @@ const handleCreate = async () => {
                     class="lg:h-[23rem] lg:max-h-[23rem] flex items-start justify-center flex-auto border-2 border-dashed rounded-md"
                   >
                     <div class="flex flex-col p-4">
-                      <div class="mb-3 text-xl font-semibold text-center">Select the travel</div>
+                      <div class="mb-3 text-xl font-semibold text-center">
+                        Select the travel
+                      </div>
                       <div class="grid grid-cols-2 gap-8">
                         <Listbox
                           v-model="newUser.travelId"
@@ -152,7 +154,9 @@ const handleCreate = async () => {
                     class="lg:h-[23rem] flex items-start justify-center flex-auto border-2 border-dashed rounded-md w-full"
                   >
                     <div class="flex flex-col w-full p-4">
-                      <div class="mb-3 text-xl font-semibold text-center">Fill the user information</div>
+                      <div class="mb-3 text-xl font-semibold text-center">
+                        Fill the user information
+                      </div>
                       <div class="grid gap-x-6 gap-y-4 lg:gap-y-8 sm:grid-cols-6">
                         <div class="sm:col-span-2">
                           <label
@@ -288,7 +292,9 @@ const handleCreate = async () => {
                 <div class="flex flex-col">
                   <div class="lg:h-[23rem] flex items-start justify-center flex-auto border-2 border-dashed rounded-md">
                     <div class="flex flex-col w-full p-4">
-                      <div class="mb-3 text-xl font-semibold text-center">Select paymet method</div>
+                      <div class="mb-3 text-xl font-semibold text-center">
+                        Select paymet method
+                      </div>
                       <div class="grid grid-cols-1 gap-8 md:grid-cols-2">
                         <div class="flex flex-col">
                           <label class="block text-sm font-medium leading-6 text-left text-gray-900">

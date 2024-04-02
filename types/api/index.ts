@@ -25,7 +25,7 @@ export type Query = {
   q: string
   priceMin: number
   priceMax: number
-  rating: number | null
+  rating: number | undefined
   departureDate: string | undefined
 }
 

@@ -57,8 +57,12 @@ const getTravelNameById = (travelId: number) => {
         </Button>
       </div>
     </template>
-    <template #empty> No customers found. </template>
-    <template #loading> Loading customers data. Please wait. </template>
+    <template #empty>
+      No customers found.
+    </template>
+    <template #loading>
+      Loading customers data. Please wait.
+    </template>
     <Column
       field="firstName"
       header="Name"

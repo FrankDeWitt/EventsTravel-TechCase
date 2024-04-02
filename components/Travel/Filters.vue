@@ -10,7 +10,7 @@ const emit = defineEmits<{
 const searchQuery = ref('')
 const priceMin = ref<number>(0)
 const priceMax = ref<number>(5000)
-const rating = ref<number | null>(null)
+const rating = ref<number | undefined>(undefined)
 const departureDate = ref<string>()
 
 const query: ComputedRef<Query> = computed(() => ({
@@ -25,7 +25,7 @@ const reset = () => {
   searchQuery.value = ''
   priceMin.value = 0
   priceMax.value = 5000
-  rating.value = null
+  rating.value = undefined
   departureDate.value = ''
 }
 
@@ -112,7 +112,7 @@ defineExpose({ reset })
         date-format="dd/mm/yy"
         class="w-full"
         :model-value="departureDate"
-        @update:model-value="departureDate = dayjs($event).format('DD/MM/YYYY')"
+        @update:model-value="departureDate = $event !== null ? dayjs($event).format('DD/MM/YYYY') : ''"
       />
     </div>
     <div
