@@ -34,7 +34,7 @@ const getTravelNameById = (travelId: number) => {
 <template>
   <DataTable
     v-model:filters="filters"
-    :value="props.data"
+    :value="data"
     paginator
     :rows="10"
     data-key="id"

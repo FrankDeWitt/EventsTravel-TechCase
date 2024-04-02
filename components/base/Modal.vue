@@ -23,7 +23,7 @@ const sizeClass = computed(() => sizeToClassMap[props.size] || '')
   <div>
     <HeadlessTransitionRoot
       as="template"
-      :show="props.showing"
+      :show="showing"
     >
       <HeadlessDialog
         as="div"

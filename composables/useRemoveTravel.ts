@@ -1,5 +1,5 @@
 export const useRemoveTravel = async (travelId: number) => {
-  await useFetch('/api/travel/removeTravel', {
+  await $fetch('/api/travel/removeTravel', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
