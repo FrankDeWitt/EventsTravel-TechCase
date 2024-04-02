@@ -1,6 +1,5 @@
 <script lang="ts" setup>
 import dayjs from 'dayjs'
-// import customParseFormat from 'dayjs/plugin/customParseFormat'
 
 import type { Travel } from '@/types'
 
@@ -11,8 +10,6 @@ const props = defineProps<{
 const emit = defineEmits<{
   (event: 'update:data', payload: Travel): void
 }>()
-
-// dayjs.extend(customParseFormat)
 
 const localData = ref<Travel>({ ...props.data })
 

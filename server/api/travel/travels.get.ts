@@ -1,5 +1,4 @@
 import dayjs from 'dayjs'
-// import customParseFormat from 'dayjs/plugin/customParseFormat'
 
 import { getTravels } from '../../services/travelService'
 
@@ -36,7 +35,7 @@ export default eventHandler(async (event) => {
     })
     .filter((travel) => {
       if (!departureDate) return true
-      // dayjs.extend(customParseFormat)
+
       const parsedDate = dayjs(travel.departureDate, 'DD/MM/YYYY').toDate()
       const parsedDepartureDate = dayjs(departureDate, 'DD/MM/YYYY').toDate()
       return dayjs(parsedDate).isAfter(dayjs(parsedDepartureDate).subtract(1, 'day'))
