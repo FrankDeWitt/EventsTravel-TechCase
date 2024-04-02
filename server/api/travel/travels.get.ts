@@ -6,8 +6,6 @@ import { getTravels } from '../../services/travelService'
 import type { Travels } from '@/types'
 
 export default eventHandler(async (event) => {
-  dayjs.extend(customParseFormat)
-
   const travels: Travels = getTravels()
   const { q, price, rating, departureDate } = getQuery(event) as {
     q?: string
@@ -38,7 +36,7 @@ export default eventHandler(async (event) => {
     })
     .filter((travel) => {
       if (!departureDate) return true
-
+      dayjs.extend(customParseFormat)
       const parsedDate = dayjs(travel.departureDate, 'DD/MM/YYYY').toDate()
       const parsedDepartureDate = dayjs(departureDate, 'DD/MM/YYYY').toDate()
       return dayjs(parsedDate).isAfter(dayjs(parsedDepartureDate).subtract(1, 'day'))
