@@ -36,7 +36,7 @@ onBeforeMount(() => {
           to="/"
           class="-m-1.5 p-1.5"
         >
-          <span class="sr-only">WeRoad</span>
+          <span class="sr-only">EventsTravel</span>
           <BaseLogo />
         </NuxtLink>
       </div>
